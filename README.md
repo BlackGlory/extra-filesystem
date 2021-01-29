@@ -37,11 +37,11 @@ function isReadable(path: string): Promise<boolean>
 ### findAllFilenames
 
 ```ts
-function* findAllFilenames(dir: string): AsyncIterable<string>
+function findAllFilenames(dir: string): AsyncIterable<string>
 ```
 
 ### findAllDirectoryNames
 
 ```ts
-function* findAllDirectoryNames(dir: string): AsyncIterable<string>
+function findAllDirectoryNames(dir: string): AsyncIterable<string>
 ```
