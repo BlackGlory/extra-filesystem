@@ -43,5 +43,5 @@ function findAllFilenames(dir: string): AsyncIterable<string>
 ### findAllDirnames
 
 ```ts
-function findAllDirnames(dir: string): AsyncIterable<string>
+findAllDirnames(dir: string, predicate: (dirname: string) => boolean = _ => true): AsyncIterable<string>
 ```
