@@ -1,7 +1,10 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
-export async function* findAllDirnames(dir: string, predicate: (dirname: string) => boolean = _ => true): AsyncIterable<string> {
+export async function* findAllDirnames(
+  dir: string
+, predicate: (dirname: string) => boolean = _ => true
+): AsyncIterable<string> {
   const dirnames = await getSubDirnames(dir)
   for (const dirname of dirnames) {
     if (predicate(dirname)) {
