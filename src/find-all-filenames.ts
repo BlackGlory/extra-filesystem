@@ -10,7 +10,7 @@ export async function* findAllFilenames(
     if (dirent.isDirectory()) {
       const dirname = path.join(dir, dirent.name)
       if (predicate(dirname)) {
-        yield* findAllFilenames(dirname)
+        yield* findAllFilenames(dirname, predicate)
       }
     } else {
       const filename = path.join(dir, dirent.name)

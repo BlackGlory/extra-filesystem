@@ -9,7 +9,7 @@ export async function* findAllDirnames(
   for (const dirname of dirnames) {
     if (predicate(dirname)) {
       yield dirname
-      yield* findAllDirnames(dirname)
+      yield* findAllDirnames(dirname, predicate)
     }
   }
 }
