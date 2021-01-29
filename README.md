@@ -40,8 +40,8 @@ function isReadable(path: string): Promise<boolean>
 function findAllFilenames(dir: string): AsyncIterable<string>
 ```
 
-### findAllDirectoryNames
+### findAllDirnames
 
 ```ts
-function findAllDirectoryNames(dir: string): AsyncIterable<string>
+function findAllDirnames(dir: string): AsyncIterable<string>
 ```
