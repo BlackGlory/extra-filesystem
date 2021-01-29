@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/BlackGlory/bundle/compare/v0.2.1...v0.2.2) (2021-01-29)
+
+
+### Features
+
+* add predicate support ([002f952](https://github.com/BlackGlory/bundle/commit/002f9522b60b52cd777eb60a665a8bc629f7eb04))
+
 ### [0.2.1](https://github.com/BlackGlory/bundle/compare/v0.2.0...v0.2.1) (2021-01-29)
 
 
