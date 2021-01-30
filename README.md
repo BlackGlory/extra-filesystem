@@ -51,3 +51,19 @@ function findAllDirnames(
 , predicate: (dirname: string) => boolean = _ => true
 ): AsyncIterable<string>
 ```
+
+### getLongExtension
+
+```ts
+function longExtension(filename: string): string
+```
+
+Get the longest possible extension.
+
+### getShortBasename
+
+```ts
+function getShortBasename(filename: string): string
+```
+
+Get the shortest possible basename.
