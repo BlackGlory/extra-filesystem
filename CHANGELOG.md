@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.5...v0.2.6) (2021-03-29)
+
+
+### Features
+
+* add readFileLineByLine ([0782f74](https://github.com/BlackGlory/extra-filesystem/commit/0782f748641e7014464eb83f4ecc5152a238ba1e))
+
 ### [0.2.5](https://github.com/BlackGlory/bundle/compare/v0.2.4...v0.2.5) (2021-02-03)
 
 ### [0.2.4](https://github.com/BlackGlory/bundle/compare/v0.2.3...v0.2.4) (2021-01-30)
