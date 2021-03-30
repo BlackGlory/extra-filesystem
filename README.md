@@ -67,3 +67,9 @@ function getShortBasename(filename: string): string
 ```
 
 Get the shortest possible basename.
+
+### readFileLineByLine
+
+```ts
+function readFileLineByLine(filename: string, encoding: BufferEncoding = 'utf-8'): AsyncIterable<string>
+```
