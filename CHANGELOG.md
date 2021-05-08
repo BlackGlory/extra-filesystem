@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.19](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.18...v0.2.19) (2021-05-08)
+
+
+### Features
+
+* add remove ([cfcaf6e](https://github.com/BlackGlory/extra-filesystem/commit/cfcaf6e99b9fe29f49afa9a4a86822096d07c7b3))
+
 ### [0.2.18](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.17...v0.2.18) (2021-05-08)
 
 
