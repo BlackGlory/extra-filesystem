@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.10](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.9...v0.2.10) (2021-05-08)
+
+
+### Features
+
+* add pathExistsSync, writeJSONFile, writeJSONFileSync ([7644e50](https://github.com/BlackGlory/extra-filesystem/commit/7644e50a7b35b38d62d59ed88a7376b935dc7539))
+
 ### [0.2.9](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.8...v0.2.9) (2021-05-08)
 
 
