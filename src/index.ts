@@ -1,3 +1,5 @@
+export * from './ensure-dir'
+export * from './path-exists'
 export * from './find-all-filenames'
 export * from './find-all-dirnames'
 export * from './get-long-extension'

@@ -10,6 +10,18 @@ yarn add extra-filesystem
 
 ## API
 
+### ensureDir
+
+```ts
+function ensureDir(path: string): Promise<void>
+```
+
+### pathExists
+
+```ts
+function pathExists(path: string): Promise<boolean>
+```
+
 ### isDirectory
 
 ```ts
