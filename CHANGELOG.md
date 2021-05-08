@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.12](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.11...v0.2.12) (2021-05-08)
+
+
+### Features
+
+* add move ([e3871eb](https://github.com/BlackGlory/extra-filesystem/commit/e3871ebeb2e495b0ac0b0919edc9a2e5657a4b51))
+
 ### [0.2.11](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.10...v0.2.11) (2021-05-08)
 
 
