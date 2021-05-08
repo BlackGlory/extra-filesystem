@@ -22,6 +22,12 @@ function ensureDir(path: string): Promise<void>
 function pathExists(path: string): Promise<boolean>
 ```
 
+### readJSONFile
+
+```ts
+function readJSONFile<T>(path: string): Promise<T>
+```
+
 ### isDirectory
 
 ```ts
