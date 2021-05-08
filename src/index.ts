@@ -1,3 +1,5 @@
+export * from './create-temp-dir'
+export * from './create-temp-dir-sync'
 export * from './create-temp-file'
 export * from './create-temp-file-sync'
 export * from './create-temp-filename'
