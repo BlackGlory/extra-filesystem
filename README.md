@@ -10,6 +10,18 @@ yarn add extra-filesystem
 
 ## API
 
+### createTempFile
+
+```ts
+function createTempFile(): Promise<string>
+```
+
+### createTempFileSync
+
+```ts
+function createTempFileSync(): string
+```
+
 ### ensureDir
 
 ```ts

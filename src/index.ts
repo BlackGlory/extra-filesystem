@@ -1,3 +1,5 @@
+export * from './create-temp-file'
+export * from './create-temp-file-sync'
 export * from './ensure-dir'
 export * from './ensure-dir-sync'
 export * from './ensure-file'
