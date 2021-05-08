@@ -1,8 +1,8 @@
-import { tmpNameSync } from 'tmp-promise'
 import { ensureFileSync } from './ensure-file-sync'
+import { createTempFilenameSync } from './create-temp-filename-sync'
 
 export function createTempFileSync(): string {
-  const tmp = tmpNameSync()
-  ensureFileSync(tmp)
-  return tmp
+  const filename = createTempFilenameSync()
+  ensureFileSync(filename)
+  return filename
 }
