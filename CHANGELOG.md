@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.8](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.7...v0.2.8) (2021-05-08)
+
+
+### Features
+
+* add ensureDir, pathExists ([a614df9](https://github.com/BlackGlory/extra-filesystem/commit/a614df9630a289550cc37e783dc23b677b857386))
+
 ### [0.2.7](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.6...v0.2.7) (2021-03-29)
 
 ### [0.2.6](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.5...v0.2.6) (2021-03-29)
