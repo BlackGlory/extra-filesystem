@@ -1,4 +1,5 @@
 export * from './ensure-dir'
+export * from './ensure-dir-sync'
 export * from './path-exists'
 export * from './path-exists-sync'
 export * from './read-json-file'

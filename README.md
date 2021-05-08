@@ -16,6 +16,12 @@ yarn add extra-filesystem
 function ensureDir(path: string): Promise<void>
 ```
 
+### ensureDirSync
+
+```ts
+function ensureDirSync(path: string): void
+```
+
 ### pathExists
 
 ```ts
