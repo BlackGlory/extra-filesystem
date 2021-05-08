@@ -171,10 +171,14 @@ function findAllDirnames(
 ### getLongExtension
 
 ```ts
-function longExtension(filename: string): string
+function getLongExtension(filename: string): string
 ```
 
 Get the longest possible extension.
+
+```ts
+getLongExtension('file.tar.gz') // '.tar.gz'
+```
 
 ### getShortBasename
 
@@ -183,6 +187,10 @@ function getShortBasename(filename: string): string
 ```
 
 Get the shortest possible basename.
+
+```ts
+getShortBasename('file.tar.gz') // 'file'
+```
 
 ### readFileLineByLine
 
