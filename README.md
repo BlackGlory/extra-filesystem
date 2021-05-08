@@ -66,6 +66,12 @@ function writeJSONFileSync(
 ): void
 ```
 
+### move
+
+```ts
+function move(oldPath: string, newPath: string): Promise<void>
+```
+
 ### isDirectory
 
 ```ts
