@@ -22,10 +22,42 @@ function ensureDir(path: string): Promise<void>
 function pathExists(path: string): Promise<boolean>
 ```
 
+### pathExistsSync
+
+```ts
+function pathExistsSync(path: string): boolean
+```
+
 ### readJSONFile
 
 ```ts
 function readJSONFile<T>(path: string): Promise<T>
+```
+
+### readJSONFileSync
+
+```ts
+function readJSONFileSync<T>(path: string): T
+```
+
+### writeJSONFile
+
+```ts
+function writeJSONFile(
+  filename: string
+, data: unknown
+, options?: { spaces?: number }
+): Promise<void>
+```
+
+### writeJSONFileSync
+
+```ts
+function writeJSONFileSync(
+  filename: string
+, data: unknown
+, options?: { spaces?: number }
+): void
 ```
 
 ### isDirectory
