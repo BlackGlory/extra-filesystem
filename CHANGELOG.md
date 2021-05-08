@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.11](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.10...v0.2.11) (2021-05-08)
+
+
+### Features
+
+* add ensureDirSync ([606dfc2](https://github.com/BlackGlory/extra-filesystem/commit/606dfc2291bacd33f33e76e6d4043bfd21355678))
+
 ### [0.2.10](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.9...v0.2.10) (2021-05-08)
 
 
