@@ -5,7 +5,10 @@ import { promises as fs } from 'fs'
 export async function ensureFile(filename: string): Promise<void> {
   const dir = path.dirname(filename)
   await ensureDir(dir)
-  await fs.open(filename, 'wx').catch(pass)
+  try {
+    const handle = await fs.open(filename, 'wx')
+    await handle.close()
+  } catch {
+    // pass
+  }
 }
-
-function pass() {}

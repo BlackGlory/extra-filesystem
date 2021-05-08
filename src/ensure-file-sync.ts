@@ -6,7 +6,7 @@ export async function ensureFileSync(filename: string): Promise<void> {
   const dir = path.dirname(filename)
   ensureDirSync(dir)
   try {
-    fs.openSync(filename, 'wx')
+    fs.closeSync(fs.openSync(filename, 'wx'))
   } catch {
     // pass
   }
