@@ -22,6 +22,18 @@ function ensureDir(path: string): Promise<void>
 function ensureDirSync(path: string): void
 ```
 
+### ensureFile
+
+```ts
+function ensureFile(filename: string): Promise<void>
+```
+
+### ensureFileSync
+
+```ts
+function ensureFileSync(filename: string): void
+```
+
 ### pathExists
 
 ```ts
