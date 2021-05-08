@@ -27,6 +27,9 @@
     "build:es2018:patch": "tscpaths -p tsconfig.build.json -s ./src -o ./lib/es2018",
     "release": "standard-version"
   },
+  "engines": {
+    "node": ">= 14"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "run-s lint build",
