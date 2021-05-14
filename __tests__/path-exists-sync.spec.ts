@@ -4,8 +4,14 @@ import '@blackglory/jest-matchers'
 
 describe('pathExistsSync(path: string): boolean', () => {
   describe('exist', () => {
-    it('return true', () => {
+    test('directory', () => {
       const result = pathExistsSync(fixture('file'))
+
+      expect(result).toBe(true)
+    })
+
+    test('file', () => {
+      const result = pathExistsSync(fixture('directory'))
 
       expect(result).toBe(true)
     })

@@ -1,14 +1,20 @@
 import { isReadable } from '@src/is-readable'
 import { fixture, temp } from '@test/utils'
 import '@blackglory/jest-matchers'
+import { ensureDir } from '@src/ensure-dir'
 import { emptyDir } from 'fs-extra'
 import { promises as fs } from 'fs'
 import { ensureFile } from '@src/ensure-file'
+import { remove } from '@src/remove'
 
 // If we set an unreadable fixture,
 // then we cannot commit the fixture to the repository (permission denied).
 
-afterEach(() => emptyDir(temp('.')))
+beforeEach(async () => {
+  await ensureDir(temp('.'))
+  await emptyDir(temp('.'))
+})
+afterEach(() => remove(temp('.')))
 
 describe('isReadable(path: string): Promise<boolean>', () => {
   describe('target is readable', () => {

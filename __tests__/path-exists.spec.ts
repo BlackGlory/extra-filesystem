@@ -4,8 +4,16 @@ import '@blackglory/jest-matchers'
 
 describe('pathExists(path: string): Promise<boolean>', () => {
   describe('exist', () => {
-    it('return true', async () => {
+    test('directory', async () => {
       const result = pathExists(fixture('file'))
+      const proResult = await result
+
+      expect(result).toBePromise()
+      expect(proResult).toBe(true)
+    })
+
+    test('file', async () => {
+      const result = pathExists(fixture('directory'))
       const proResult = await result
 
       expect(result).toBePromise()

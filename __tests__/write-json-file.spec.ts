@@ -2,10 +2,15 @@ import { writeJSONFile } from '@src/write-json-file'
 import { temp } from '@test/utils'
 import { promises as fs } from 'fs'
 import { emptyDir } from 'fs-extra'
+import { ensureDir } from '@src/ensure-dir'
+import { remove } from '@src/remove'
 import '@blackglory/jest-matchers'
 
-beforeEach(() => emptyDir(temp('.')))
-afterEach(() => emptyDir(temp('.')))
+beforeEach(async () => {
+  await ensureDir(temp('.'))
+  await emptyDir(temp('.'))
+})
+afterEach(() => remove(temp('.')))
 
 test(`
   writeJSONFile(

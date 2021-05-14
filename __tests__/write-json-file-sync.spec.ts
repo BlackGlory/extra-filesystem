@@ -1,10 +1,15 @@
 import { writeJSONFileSync } from '@src/write-json-file-sync'
 import { temp } from '@test/utils'
 import { readFileSync } from 'fs'
+import { ensureDir } from '@src/ensure-dir'
 import { emptyDir } from 'fs-extra'
+import { remove } from '@src/remove'
 
-beforeEach(() => emptyDir(temp('.')))
-afterEach(() => emptyDir(temp('.')))
+beforeEach(async () => {
+  await ensureDir(temp('.'))
+  await emptyDir(temp('.'))
+})
+afterEach(() => remove(temp('.')))
 
 test(`
   writeJSONFileSync(
