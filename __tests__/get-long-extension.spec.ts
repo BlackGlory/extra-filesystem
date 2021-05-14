@@ -5,5 +5,5 @@ test('getLongExtension(filename: string): string', () => {
 
   const result = getLongExtension(filename)
 
-  expect(result).toBe('tar.gz')
+  expect(result).toBe('.tar.gz')
 })
