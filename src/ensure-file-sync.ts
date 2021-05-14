@@ -2,7 +2,7 @@ import { ensureDirSync } from './ensure-dir-sync'
 import * as path from 'path'
 import * as fs from 'fs'
 
-export async function ensureFileSync(filename: string): Promise<void> {
+export function ensureFileSync(filename: string): void {
   const dir = path.dirname(filename)
   ensureDirSync(dir)
   try {
