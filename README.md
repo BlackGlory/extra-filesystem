@@ -120,10 +120,22 @@ function writeJSONFileSync(
 function move(oldPath: string, newPath: string): Promise<void>
 ```
 
+### moveSync
+
+```ts
+function moveSync(oldPath: string, newPath: string): void
+```
+
 ### remove
 
 ```ts
 function remove(path: string): Promise<void>
+```
+
+### removeSync
+
+```ts
+function removeSync(path: string): void
 ```
 
 ### isDirectory
