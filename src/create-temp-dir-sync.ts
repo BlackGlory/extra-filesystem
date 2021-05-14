@@ -1,8 +1,8 @@
 import { ensureDirSync } from './ensure-dir-sync'
-import { createTempFilenameSync } from './create-temp-filename-sync'
+import { createTempNameSync } from './create-temp-name-sync'
 
 export function createTempDirSync(): string {
-  const dirname = createTempFilenameSync()
+  const dirname = createTempNameSync()
   ensureDirSync(dirname)
   return dirname
 }

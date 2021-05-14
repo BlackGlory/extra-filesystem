@@ -1,8 +1,8 @@
 import { ensureFile } from './ensure-file'
-import { createTempFilename } from './create-temp-filename'
+import { createTempName } from './create-temp-name'
 
 export async function createTempFile(): Promise<string> {
-  const filename = await createTempFilename()
+  const filename = await createTempName()
   await ensureFile(filename)
   return filename
 }

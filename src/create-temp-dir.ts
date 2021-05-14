@@ -1,8 +1,8 @@
 import { ensureDir } from './ensure-dir'
-import { createTempFilename } from './create-temp-filename'
+import { createTempName } from './create-temp-name'
 
 export async function createTempDir(): Promise<string> {
-  const dirname = await createTempFilename()
+  const dirname = await createTempName()
   await ensureDir(dirname)
   return dirname
 }

@@ -34,16 +34,16 @@ function createTempFile(): Promise<string>
 function createTempFileSync(): string
 ```
 
-### createTempFilename
+### createTempName
 
 ```ts
-function createTempFilename(): Promise<stirng>
+function createTempName(): Promise<stirng>
 ```
 
-### createTempFilenameSync
+### createTempNameSync
 
 ```ts
-function createTempFilenameSync(): string
+function createTempNameSync(): string
 ```
 
 ### ensureDir

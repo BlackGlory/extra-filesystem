@@ -1,5 +1,5 @@
 import { tmpNameSync } from 'tmp-promise'
 
-export function createTempFilenameSync(): string {
+export function createTempNameSync(): string {
   return tmpNameSync()
 }
