@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.20...v0.3.0) (2021-05-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* createTempFilename => createTempName
+createTempFilenameSync => createTempNameSync
+
+### Features
+
+* add emptyDir, emptyDirSync ([f5b7280](https://github.com/BlackGlory/extra-filesystem/commit/f5b72807a0dd6822a00772f6ad9d5716713c43d0))
+* isFileSync, isDirectorySync ([5ea1fee](https://github.com/BlackGlory/extra-filesystem/commit/5ea1feebdb8dd49229d1df832c12b3453fbad59e))
+* moveSync, removeSync ([a6428d0](https://github.com/BlackGlory/extra-filesystem/commit/a6428d0686cc3b7b22b98df5deefd657b19cd989))
+
+
+* rename ([14950ff](https://github.com/BlackGlory/extra-filesystem/commit/14950ff33b425087252df71e2e7f2a90272926b2))
+
 ### [0.2.20](https://github.com/BlackGlory/extra-filesystem/compare/v0.2.19...v0.2.20) (2021-05-08)
 
 
