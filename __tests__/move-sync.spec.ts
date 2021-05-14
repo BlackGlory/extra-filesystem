@@ -2,7 +2,7 @@ import { moveSync } from '@src/move-sync'
 import { temp } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
 import { ensureDirSync } from '@src/ensure-dir-sync'
-import { emptyDir } from 'fs-extra'
+import { emptyDir } from '@src/empty-dir'
 import { ensureFileSync } from '@src/ensure-file-sync'
 import { remove } from '@src/remove'
 import { pathExistsSync } from '@src/path-exists-sync'
@@ -34,7 +34,6 @@ describe('moveSync(oldPath: string, newPath: string): void', () => {
 
     const result = moveSync(oldDirname, newDirname)
 
-    expect(result).toBePromise()
     expect(result).toBeUndefined()
     expect(pathExistsSync(oldDirname)).toBe(false)
     expect(pathExistsSync(newDirname)).toBe(true)

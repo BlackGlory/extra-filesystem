@@ -6,7 +6,7 @@ import 'jest-extended'
 
 describe(`
   findAllDirnames(
-    dir: string
+    dirname: string
   , predicate: (dirname: string) => boolean
   ): AsyncIterable<string>
 `, () => {

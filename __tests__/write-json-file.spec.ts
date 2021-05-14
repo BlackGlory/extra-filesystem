@@ -1,7 +1,7 @@
 import { writeJSONFile } from '@src/write-json-file'
 import { temp } from '@test/utils'
 import { promises as fs } from 'fs'
-import { emptyDir } from 'fs-extra'
+import { emptyDir } from '@src/empty-dir'
 import { ensureDir } from '@src/ensure-dir'
 import { remove } from '@src/remove'
 import '@blackglory/jest-matchers'

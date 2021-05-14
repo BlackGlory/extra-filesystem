@@ -1,5 +1,5 @@
 import * as fs from 'fs'
 
-export function ensureDirSync(path: string): void {
-  fs.mkdirSync(path, { recursive: true })
+export function ensureDirSync(dirname: string): void {
+  fs.mkdirSync(dirname, { recursive: true })
 }

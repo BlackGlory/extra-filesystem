@@ -2,7 +2,7 @@ import { writeJSONFileSync } from '@src/write-json-file-sync'
 import { temp } from '@test/utils'
 import { readFileSync } from 'fs'
 import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from 'fs-extra'
+import { emptyDir } from '@src/empty-dir'
 import { remove } from '@src/remove'
 
 beforeEach(async () => {

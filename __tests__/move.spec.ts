@@ -1,7 +1,7 @@
 import { move } from '@src/move'
 import { temp } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from 'fs-extra'
+import { emptyDir } from '@src/empty-dir'
 import { ensureFile } from '@src/ensure-file'
 import { remove } from '@src/remove'
 import { pathExists } from '@src/path-exists'

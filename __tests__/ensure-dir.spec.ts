@@ -1,7 +1,7 @@
 import { remove } from '@src/remove'
 import { temp } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from 'fs-extra'
+import { emptyDir } from '@src/empty-dir'
 import { pathExists } from '@src/path-exists'
 import '@blackglory/jest-matchers'
 

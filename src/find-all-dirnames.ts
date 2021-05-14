@@ -2,11 +2,11 @@ import { promises as fs } from 'fs'
 import * as path from 'path'
 
 export async function* findAllDirnames(
-  dir: string
+  dirname: string
 , predicate: (dirname: string) => boolean = _ => true
 ): AsyncIterable<string> {
-  const dirnames = await getSubDirnames(dir)
-  for (const dirname of dirnames) {
+  const subDirnames = await getSubDirnames(dirname)
+  for (const dirname of subDirnames) {
     if (predicate(dirname)) {
       yield dirname
       yield* findAllDirnames(dirname, predicate)
@@ -14,9 +14,9 @@ export async function* findAllDirnames(
   }
 }
 
-async function getSubDirnames(dir: string): Promise<string[]> {
-  const dirents = await fs.readdir(dir, { withFileTypes: true })
+async function getSubDirnames(dirname: string): Promise<string[]> {
+  const dirents = await fs.readdir(dirname, { withFileTypes: true })
   return dirents
     .filter(x => x.isDirectory())
-    .map(x => path.join(dir, x.name))
+    .map(x => path.join(dirname, x.name))
 }

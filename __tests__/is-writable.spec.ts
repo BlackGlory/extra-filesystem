@@ -1,7 +1,7 @@
 import { isWritable } from '@src/is-writable'
 import { fixture, temp } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from 'fs-extra'
+import { emptyDir } from '@src/empty-dir'
 import { remove } from '@src/remove'
 import { promises as fs } from 'fs'
 import { ensureFile } from '@src/ensure-file'

@@ -1,7 +1,7 @@
 import { remove } from '@src/remove'
 import { removeSync } from '@src/remove-sync'
 import { temp } from '@test/utils'
-import { emptyDir } from 'fs-extra'
+import { emptyDir } from '@src/empty-dir'
 import { ensureDir } from '@src/ensure-dir'
 import { ensureDirSync } from '@src/ensure-dir-sync'
 import { ensureFileSync } from '@src/ensure-file-sync'
@@ -29,7 +29,7 @@ describe('removeSync(path: string): void', () => {
     const dirname = temp('directory')
     ensureDirSync(dirname)
 
-    const result = remove(dirname)
+    const result = removeSync(dirname)
 
     expect(result).toBeUndefined()
     expect(pathExistsSync(dirname)).toBe(false)
@@ -40,7 +40,7 @@ describe('removeSync(path: string): void', () => {
     ensureDirSync(dirname)
     ensureFileSync(temp('directory/file'))
 
-    const result = remove(dirname)
+    const result = removeSync(dirname)
 
     expect(result).toBeUndefined()
     expect(pathExistsSync(dirname)).toBe(false)

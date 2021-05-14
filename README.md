@@ -46,16 +46,28 @@ function createTempName(): Promise<stirng>
 function createTempNameSync(): string
 ```
 
+### emptyDir
+
+```ts
+function emptyDir(dirname: string): Promise<void>
+```
+
+### emptyDirSync
+
+```ts
+function emptyDirSync(dirname: string): void
+```
+
 ### ensureDir
 
 ```ts
-function ensureDir(path: string): Promise<void>
+function ensureDir(dirname: string): Promise<void>
 ```
 
 ### ensureDirSync
 
 ```ts
-function ensureDirSync(path: string): void
+function ensureDirSync(dirname: string): void
 ```
 
 ### ensureFile
@@ -85,13 +97,13 @@ function pathExistsSync(path: string): boolean
 ### readJSONFile
 
 ```ts
-function readJSONFile<T>(path: string): Promise<T>
+function readJSONFile<T>(filename: string): Promise<T>
 ```
 
 ### readJSONFileSync
 
 ```ts
-function readJSONFileSync<T>(path: string): T
+function readJSONFileSync<T>(filename: string): T
 ```
 
 ### writeJSONFile
@@ -166,7 +178,7 @@ function isReadable(path: string): Promise<boolean>
 
 ```ts
 function findAllFilenames(
-  dir: string
+  dirname: string
 , predicate: (dirname: string) => boolean = _ => true
 ): AsyncIterable<string>
 ```
@@ -175,7 +187,7 @@ function findAllFilenames(
 
 ```ts
 function findAllDirnames(
-  dir: string
+  dirname: string
 , predicate: (dirname: string) => boolean = _ => true
 ): AsyncIterable<string>
 ```
