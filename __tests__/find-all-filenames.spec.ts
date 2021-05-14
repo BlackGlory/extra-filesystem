@@ -20,6 +20,7 @@ describe(`
     expect(proResult).toIncludeSameMembers([
       fixture('nested/file')
     , fixture('nested/directory/deep-file')
+    , fixture('nested/directory/deep-directory/file')
     ])
     expect(fn).toBeCalledTimes(2)
     expect(fn).nthCalledWith(1, fixture('nested/directory'))
