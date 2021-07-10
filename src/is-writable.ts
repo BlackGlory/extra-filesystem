@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import * as fs from 'fs/promises'
 import { constants } from 'fs'
 
 export async function isWritable(path: string): Promise<boolean> {

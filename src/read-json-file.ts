@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import * as fs from 'fs/promises'
 
 export async function readJSONFile<T>(filename: string): Promise<T> {
   const text = await fs.readFile(filename, 'utf-8')

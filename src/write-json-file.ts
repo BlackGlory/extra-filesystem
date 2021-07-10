@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import * as fs from 'fs/promises'
 
 export async function writeJSONFile(
   filename: string

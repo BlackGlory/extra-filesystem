@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import * as fs from 'fs/promises'
 import { remove } from './remove'
 import { each } from 'extra-promise'
 import * as path from 'path'

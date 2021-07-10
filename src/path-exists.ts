@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import * as fs from 'fs/promises'
 
 /**
  * Note: Combining pathExists with other fs functions will introduce race conditions.

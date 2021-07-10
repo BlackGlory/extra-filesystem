@@ -1,6 +1,6 @@
 import { ensureDir } from './ensure-dir'
 import * as path from 'path'
-import { promises as fs } from 'fs'
+import * as fs from 'fs/promises'
 
 export async function ensureFile(filename: string): Promise<void> {
   const dir = path.dirname(filename)
