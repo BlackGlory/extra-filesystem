@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.2...v0.3.3) (2021-07-10)
+
+
+### Features
+
+* add writeIterableToFile ([f7aa9de](https://github.com/BlackGlory/extra-filesystem/commit/f7aa9ded5db6092c25efafe9a2711aaf9159cb7d))
+
 ### [0.3.2](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.1...v0.3.2) (2021-05-17)
 
 ### [0.3.1](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.0...v0.3.1) (2021-05-16)
