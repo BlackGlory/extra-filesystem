@@ -3,7 +3,7 @@ import { fixture, temp } from '@test/utils'
 import '@blackglory/jest-matchers'
 import { ensureDir } from '@src/ensure-dir'
 import { emptyDir } from '@src/empty-dir'
-import { promises as fs } from 'fs'
+import * as fs from 'fs/promises'
 import { ensureFile } from '@src/ensure-file'
 import { remove } from '@src/remove'
 

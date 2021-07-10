@@ -3,7 +3,7 @@ import { temp } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
 import { ensureFile } from '@src/ensure-file'
 import { emptyDir } from '@src/empty-dir'
-import { promises as fs } from 'fs'
+import * as fs from 'fs/promises'
 import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
