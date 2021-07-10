@@ -221,3 +221,12 @@ getShortBasename('file.tar.gz') // 'file'
 ```ts
 function readFileLineByLine(filename: string, encoding: BufferEncoding = 'utf-8'): AsyncIterable<string>
 ```
+
+### writeIterableToFile
+
+```ts
+function writeIterableToFile(
+  filename: string
+, iterable: Iterable<string> | AsyncIterable<string>
+): Promise<void>
+```
