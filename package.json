@@ -40,7 +40,6 @@
     "@blackglory/jest-matchers": "^0.1.20",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@types/fs-extra": "^9.0.12",
     "@types/jest": "^26.0.24",
     "@types/node": "14",
     "@types/tmp": "^0.2.1",
