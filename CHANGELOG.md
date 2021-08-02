@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.6...v0.3.7) (2021-08-02)
+
+
+### Features
+
+* `move`, `moveSync` now overwrite existing files ([5a9dbc0](https://github.com/BlackGlory/extra-filesystem/commit/5a9dbc047df27ac2e1ffef5e86fe3bb75bb2a606))
+
 ### [0.3.6](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.5...v0.3.6) (2021-08-02)
 
 
