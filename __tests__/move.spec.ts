@@ -5,6 +5,7 @@ import { emptyDir } from '@src/empty-dir'
 import { ensureFile } from '@src/ensure-file'
 import { remove } from '@src/remove'
 import { pathExists } from '@src/path-exists'
+import * as fs from 'fs/promises'
 import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
@@ -26,6 +27,24 @@ describe('move(oldPath: string, newPath: string): Promise<void>', () => {
     expect(proResult).toBeUndefined()
     expect(await pathExists(oldFilename)).toBe(false)
     expect(await pathExists(newFilename)).toBe(true)
+  })
+
+  test('overwrite', async () => {
+    const oldFileContent = 'old'
+    const oldFilename = temp('file')
+    const newFilename = temp('new-file')
+    await fs.writeFile(oldFilename, oldFileContent, 'utf-8')
+    await ensureFile(newFilename)
+
+    const result = move(oldFilename, newFilename)
+    const proResult = await result
+    const newFileContent = await fs.readFile(newFilename, 'utf-8')
+
+    expect(result).toBePromise()
+    expect(proResult).toBeUndefined()
+    expect(await pathExists(oldFilename)).toBe(false)
+    expect(await pathExists(newFilename)).toBe(true)
+    expect(newFileContent).toBe(oldFileContent)
   })
 
   test('directory', async () => {
