@@ -1,5 +1,5 @@
-import * as fs from 'fs'
+import * as fs from 'fs-extra'
 
 export function moveSync(oldPath: string, newPath: string): void {
-  fs.renameSync(oldPath, newPath)
+  fs.moveSync(oldPath, newPath)
 }
