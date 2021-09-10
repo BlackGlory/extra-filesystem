@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.7...v0.3.8) (2021-09-10)
+
+
+### Features
+
+* add isSubPathOf ([635f19e](https://github.com/BlackGlory/extra-filesystem/commit/635f19e24d39c687c44fac1dd5210c2fe68340d2))
+
 ### [0.3.7](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.6...v0.3.7) (2021-08-02)
 
 
