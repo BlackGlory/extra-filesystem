@@ -230,3 +230,9 @@ function writeIterableToFile(
 , iterable: Iterable<string> | AsyncIterable<string>
 ): Promise<void>
 ```
+
+### isSubPathOf
+
+```ts
+function isSubPathOf(subject: string, object: string): boolean
+```
