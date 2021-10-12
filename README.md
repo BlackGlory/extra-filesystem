@@ -138,6 +138,18 @@ function move(oldPath: string, newPath: string): Promise<void>
 function moveSync(oldPath: string, newPath: string): void
 ```
 
+### copy
+
+```ts
+function copy(sourcePath: string, destinationPath: string): Promise<void>
+```
+
+### copySync
+
+```ts
+function copySync(sourcePath: string, destinationPath: string): void
+```
+
 ### remove
 
 ```ts
