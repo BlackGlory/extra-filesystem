@@ -1,5 +1,5 @@
 import { remove } from '@src/remove'
-import { temp } from '@test/utils'
+import { getTempFilename } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
 import { ensureDirSync } from '@src/ensure-dir-sync'
 import { ensureFileSync } from '@src/ensure-file-sync'
@@ -9,13 +9,13 @@ import * as fs from 'fs'
 import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
-  await ensureDir(temp('.'))
-  await emptyDir(temp('.'))
+  await ensureDir(getTempFilename('.'))
+  await emptyDir(getTempFilename('.'))
 })
-afterEach(() => remove(temp('.')))
+afterEach(() => remove(getTempFilename('.')))
 
 test('emptyDirSync(dirname: string): void', () => {
-  const dirname = temp('directory')
+  const dirname = getTempFilename('directory')
   ensureDirSync(`${dirname}/directory`)
   ensureFileSync(`${dirname}/file`)
 

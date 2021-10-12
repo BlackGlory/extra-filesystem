@@ -1,5 +1,5 @@
 import { readFileLineByLine } from '@src/read-file-line-by-line'
-import { fixture } from '@test/utils'
+import { getFixtureFilename } from '@test/utils'
 import { toArrayAsync } from 'iterable-operator'
 import '@blackglory/jest-matchers'
 
@@ -9,7 +9,7 @@ test(`
   , encoding: string
   ): AsyncIterable<string>
 `, async () => {
-  const result = readFileLineByLine(fixture('multiline'))
+  const result = readFileLineByLine(getFixtureFilename('multiline'))
   const proResult = await toArrayAsync(result)
 
   expect(result).toBeAsyncIterable()

@@ -1,9 +1,9 @@
 import { readJSONFile } from '@src/read-json-file'
-import { fixture } from '@test/utils'
+import { getFixtureFilename } from '@test/utils'
 import '@blackglory/jest-matchers'
 
 test('readJSONFile(filename: string): Promise<string>', async () => {
-  const result = readJSONFile<string>(fixture('data.json'))
+  const result = readJSONFile<string>(getFixtureFilename('data.json'))
   const proResult = await result
 
   expect(result).toBePromise()

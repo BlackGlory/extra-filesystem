@@ -1,5 +1,5 @@
 import { writeJSONFile } from '@src/write-json-file'
-import { temp } from '@test/utils'
+import { getTempFilename } from '@test/utils'
 import * as fs from 'fs/promises'
 import { emptyDir } from '@src/empty-dir'
 import { ensureDir } from '@src/ensure-dir'
@@ -7,10 +7,10 @@ import { remove } from '@src/remove'
 import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
-  await ensureDir(temp('.'))
-  await emptyDir(temp('.'))
+  await ensureDir(getTempFilename('.'))
+  await emptyDir(getTempFilename('.'))
 })
-afterEach(() => remove(temp('.')))
+afterEach(() => remove(getTempFilename('.')))
 
 test(`
   writeJSONFile(
@@ -20,7 +20,7 @@ test(`
   ): Promise<void>
 `, async () => {
   const data = { json: 'json' }
-  const filename = temp('json-file')
+  const filename = getTempFilename('json-file')
 
   const result = writeJSONFile(filename, data, { spaces: 2 })
   const proResult = await result

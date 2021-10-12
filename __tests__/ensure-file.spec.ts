@@ -1,5 +1,5 @@
 import { remove } from '@src/remove'
-import { temp } from '@test/utils'
+import { getTempFilename } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
 import { emptyDir } from '@src/empty-dir'
 import { ensureFile } from '@src/ensure-file'
@@ -7,14 +7,14 @@ import { pathExists } from '@src/path-exists'
 import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
-  await ensureDir(temp('.'))
-  await emptyDir(temp('.'))
+  await ensureDir(getTempFilename('.'))
+  await emptyDir(getTempFilename('.'))
 })
-afterEach(() => remove(temp('.')))
+afterEach(() => remove(getTempFilename('.')))
 
 describe('ensureFile(filename: string): Promise<void>', () => {
   test('file exists', async () => {
-    const filename = temp('file')
+    const filename = getTempFilename('file')
     await ensureFile(filename)
 
     const result = ensureFile(filename)
@@ -26,7 +26,7 @@ describe('ensureFile(filename: string): Promise<void>', () => {
   })
 
   test('file does not exist', async () => {
-    const filename = temp('file')
+    const filename = getTempFilename('file')
 
     const result = ensureFile(filename)
     const proResult = await result

@@ -1,5 +1,5 @@
 import { isReadable } from '@src/is-readable'
-import { fixture, temp } from '@test/utils'
+import { getFixtureFilename, getTempFilename } from '@test/utils'
 import '@blackglory/jest-matchers'
 import { ensureDir } from '@src/ensure-dir'
 import { emptyDir } from '@src/empty-dir'
@@ -11,15 +11,15 @@ import { remove } from '@src/remove'
 // then we cannot commit the fixture to the repository (permission denied).
 
 beforeEach(async () => {
-  await ensureDir(temp('.'))
-  await emptyDir(temp('.'))
+  await ensureDir(getTempFilename('.'))
+  await emptyDir(getTempFilename('.'))
 })
-afterEach(() => remove(temp('.')))
+afterEach(() => remove(getTempFilename('.')))
 
 describe('isReadable(path: string): Promise<boolean>', () => {
   describe('target is readable', () => {
     it('return true', async () => {
-      const result = isReadable(fixture('file'))
+      const result = isReadable(getFixtureFilename('file'))
       const proResult = await result
 
       expect(result).toBePromise()
@@ -29,7 +29,7 @@ describe('isReadable(path: string): Promise<boolean>', () => {
 
   describe('target is unreadable', () => {
     it('return false', async () => {
-      const fixture = temp('unreadable')
+      const fixture = getTempFilename('unreadable')
       await ensureFile(fixture)
       await fs.chmod(fixture, 0o333)
 

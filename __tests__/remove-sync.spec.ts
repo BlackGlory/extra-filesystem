@@ -1,6 +1,6 @@
 import { remove } from '@src/remove'
 import { removeSync } from '@src/remove-sync'
-import { temp } from '@test/utils'
+import { getTempFilename } from '@test/utils'
 import { emptyDir } from '@src/empty-dir'
 import { ensureDir } from '@src/ensure-dir'
 import { ensureDirSync } from '@src/ensure-dir-sync'
@@ -9,14 +9,14 @@ import { pathExistsSync } from '@src/path-exists-sync'
 import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
-  await ensureDir(temp('.'))
-  await emptyDir(temp('.'))
+  await ensureDir(getTempFilename('.'))
+  await emptyDir(getTempFilename('.'))
 })
-afterEach(() => remove(temp('.')))
+afterEach(() => remove(getTempFilename('.')))
 
 describe('removeSync(path: string): void', () => {
   test('file', () => {
-    const filename = temp('file')
+    const filename = getTempFilename('file')
     ensureFileSync(filename)
 
     const result = removeSync(filename)
@@ -26,7 +26,7 @@ describe('removeSync(path: string): void', () => {
   })
 
   test('directory', () => {
-    const dirname = temp('directory')
+    const dirname = getTempFilename('directory')
     ensureDirSync(dirname)
 
     const result = removeSync(dirname)
@@ -36,9 +36,9 @@ describe('removeSync(path: string): void', () => {
   })
 
   test('non-empty directory', () => {
-    const dirname = temp('directory')
+    const dirname = getTempFilename('directory')
     ensureDirSync(dirname)
-    ensureFileSync(temp('directory/file'))
+    ensureFileSync(getTempFilename('directory/file'))
 
     const result = removeSync(dirname)
 

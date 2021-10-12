@@ -1,5 +1,5 @@
 import { move } from '@src/move'
-import { temp } from '@test/utils'
+import { getTempFilename } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
 import { emptyDir } from '@src/empty-dir'
 import { ensureFile } from '@src/ensure-file'
@@ -9,15 +9,15 @@ import * as fs from 'fs/promises'
 import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
-  await ensureDir(temp('.'))
-  await emptyDir(temp('.'))
+  await ensureDir(getTempFilename('.'))
+  await emptyDir(getTempFilename('.'))
 })
-afterEach(() => remove(temp('.')))
+afterEach(() => remove(getTempFilename('.')))
 
 describe('move(oldPath: string, newPath: string): Promise<void>', () => {
   test('file', async () => {
-    const oldFilename = temp('file')
-    const newFilename = temp('new-file')
+    const oldFilename = getTempFilename('file')
+    const newFilename = getTempFilename('new-file')
     await ensureFile(oldFilename)
 
     const result = move(oldFilename, newFilename)
@@ -31,8 +31,8 @@ describe('move(oldPath: string, newPath: string): Promise<void>', () => {
 
   test('overwrite', async () => {
     const oldFileContent = 'old'
-    const oldFilename = temp('file')
-    const newFilename = temp('new-file')
+    const oldFilename = getTempFilename('file')
+    const newFilename = getTempFilename('new-file')
     await fs.writeFile(oldFilename, oldFileContent, 'utf-8')
     await ensureFile(newFilename)
 
@@ -48,8 +48,8 @@ describe('move(oldPath: string, newPath: string): Promise<void>', () => {
   })
 
   test('directory', async () => {
-    const oldDirname = temp('directory')
-    const newDirname = temp('new-directory')
+    const oldDirname = getTempFilename('directory')
+    const newDirname = getTempFilename('new-directory')
     await ensureDir(oldDirname)
 
     const result = move(oldDirname, newDirname)

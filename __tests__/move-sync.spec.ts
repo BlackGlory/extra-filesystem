@@ -1,5 +1,5 @@
 import { moveSync } from '@src/move-sync'
-import { temp } from '@test/utils'
+import { getTempFilename } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
 import { ensureDirSync } from '@src/ensure-dir-sync'
 import { emptyDir } from '@src/empty-dir'
@@ -10,15 +10,15 @@ import * as fs from 'fs'
 import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
-  await ensureDir(temp('.'))
-  await emptyDir(temp('.'))
+  await ensureDir(getTempFilename('.'))
+  await emptyDir(getTempFilename('.'))
 })
-afterEach(() => remove(temp('.')))
+afterEach(() => remove(getTempFilename('.')))
 
 describe('moveSync(oldPath: string, newPath: string): void', () => {
   test('file', () => {
-    const oldFilename = temp('file')
-    const newFilename = temp('new-file')
+    const oldFilename = getTempFilename('file')
+    const newFilename = getTempFilename('new-file')
     ensureFileSync(oldFilename)
 
     const result = moveSync(oldFilename, newFilename)
@@ -30,8 +30,8 @@ describe('moveSync(oldPath: string, newPath: string): void', () => {
 
   test('overwrite', () => {
     const oldFileContent = 'old'
-    const oldFilename = temp('file')
-    const newFilename = temp('new-file')
+    const oldFilename = getTempFilename('file')
+    const newFilename = getTempFilename('new-file')
     fs.writeFileSync(oldFilename, oldFileContent, 'utf-8')
     ensureFileSync(oldFilename)
 
@@ -45,8 +45,8 @@ describe('moveSync(oldPath: string, newPath: string): void', () => {
   })
 
   test('directory', () => {
-    const oldDirname = temp('directory')
-    const newDirname = temp('new-directory')
+    const oldDirname = getTempFilename('directory')
+    const newDirname = getTempFilename('new-directory')
     ensureDirSync(oldDirname)
 
     const result = moveSync(oldDirname, newDirname)
