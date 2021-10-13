@@ -9,6 +9,7 @@ test('isSubPathOf(subject: string, object: string): boolean', () => {
   expect(isSubPathOf('./bar', '/foo')).toBeFalse()
 
   expect(isSubPathOf('/foo/bar', '/foo')).toBeTrue()
+  expect(isSubPathOf('/foo/and/bar', '/foo')).toBeTrue()
   expect(isSubPathOf('/foo/./bar', '/foo')).toBeTrue()
   expect(isSubPathOf('/foo/bar', '/bar/../foo')).toBeTrue()
 })
