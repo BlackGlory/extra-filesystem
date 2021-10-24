@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.12](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.11...v0.3.12) (2021-10-24)
+
+
+### Features
+
+* add checksumFile ([644eff7](https://github.com/BlackGlory/extra-filesystem/commit/644eff70e9156eff5959c86ac48f05db2ee68414))
+
 ### [0.3.11](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.10...v0.3.11) (2021-10-14)
 
 ### [0.3.10](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.9...v0.3.10) (2021-10-12)
