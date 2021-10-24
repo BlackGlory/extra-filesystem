@@ -248,3 +248,9 @@ function writeIterableToFile(
 ```ts
 function isSubPathOf(subject: string, object: string): boolean
 ```
+
+### checksumFile
+
+```ts
+function checksumFile(algorithm: string, filename: string): Promise<string>
+```
