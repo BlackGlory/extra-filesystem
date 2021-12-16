@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.14...v0.4.0) (2021-12-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* - The minimum version is Node.js v16
+
+* upgrade dependencies ([da69a6f](https://github.com/BlackGlory/extra-filesystem/commit/da69a6f7bb3a3099ba4d0d5c690ab6afceea5be7))
+
 ### [0.3.14](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.13...v0.3.14) (2021-12-12)
 
 ### [0.3.13](https://github.com/BlackGlory/extra-filesystem/compare/v0.3.12...v0.3.13) (2021-11-07)
