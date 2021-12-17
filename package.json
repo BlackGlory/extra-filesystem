@@ -12,7 +12,7 @@
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=14"
   },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet src",
@@ -42,8 +42,8 @@
     "@commitlint/config-conventional": "^15.0.0",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.3",
-    "@types/node": "16",
-    "@types/tmp": "^0.2.2",
+    "@types/node": "14",
+    "@types/tmp": "^0.2.3",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "eslint": "^8.4.1",
@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@blackglory/pass": "^0.1.0",
-    "extra-promise": "^0.20.0",
+    "extra-promise": "^0.21.0",
     "fs-extra": "^10.0.0",
     "tmp-promise": "^3.0.3"
   }

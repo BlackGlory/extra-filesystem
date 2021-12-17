@@ -1149,11 +1149,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.45.tgz#ec2dfb5566ff814d061aef7e141575aedba245cf"
   integrity sha512-DssMqTV9UnnoxDWu959sDLZzfvqCF0qDNRjaWeYSui9xkFe61kKo4l1TWNTQONpuXEm+gLMRvdlzvNHBamzmEw==
 
-"@types/node@16":
-  version "16.11.14"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.14.tgz#4939fb42e5b0ffb3ea7e193c28244fe7414977a6"
-  integrity sha512-mK6BKLpL0bG6v2CxHbm0ed6RcZrAtTHBTd/ZpnlVPVa3HkumsqLE4BC4u6TQ8D7pnrRbOU0am6epuALs+Ncnzw==
-
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -1174,10 +1169,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.0.tgz#7036640b4e21cc2f259ae826ce843d277dad8cff"
   integrity sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==
 
-"@types/tmp@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@types/tmp/-/tmp-0.2.2.tgz#424537a3b91828cb26aaf697f21ae3cd1b69f7e7"
-  integrity sha512-MhSa0yylXtVMsyT8qFpHA1DLHj4DvQGH5ntxrhHSh8PxUVNi35Wk+P5hVgqbO2qZqOotqr9jaoPRL+iRjWYm/A==
+"@types/tmp@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@types/tmp/-/tmp-0.2.3.tgz#908bfb113419fd6a42273674c00994d40902c165"
+  integrity sha512-dDZH/tXzwjutnuk4UacGgFRwV+JSLaXL1ikvidfJprkb7L9Nx1njcRHHmi3Dsvt7pgqqTEeucQuOrWHPFgzVHA==
 
 "@types/yargs-parser@*":
   version "20.2.0"
@@ -2661,10 +2656,10 @@ extra-promise@^0.19.0:
     reflect-metadata "^0.1.13"
     return-style "^0.12.3"
 
-extra-promise@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/extra-promise/-/extra-promise-0.20.0.tgz#28ebb6285a7ff187b280f58011d66532c75281a1"
-  integrity sha512-i+x315uLOeHv6ofJu4I3VS9yEohQyKAEsN4HTFO2MmkzZOa7VKVFlcKvgPD9NbFBFB15DZQFMxkB6z3EaoLBOg==
+extra-promise@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/extra-promise/-/extra-promise-0.21.0.tgz#855d0a34d344c7b0bd82f9866ee526367c1770b1"
+  integrity sha512-yPJat8oubkp+sK3ONrsIJ651eN1eGsKJY9+valfiY5ihugjpB+L3gWG7/iGiQZgkIZT4i2N71YMA9itLTWgfvw==
   dependencies:
     "@blackglory/errors" "^1.1.2"
     "@blackglory/go" "^0.1.1"
