@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.3...v0.4.4) (2022-07-10)
+
+
+### Features
+
+* add readFileLineByLineSync ([d66ea4e](https://github.com/BlackGlory/extra-filesystem/commit/d66ea4ece2d413807b2935127337b2ce709997f6))
+
 ### [0.4.3](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.2...v0.4.3) (2022-07-07)
 
 ### [0.4.2](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.1...v0.4.2) (2022-03-07)
