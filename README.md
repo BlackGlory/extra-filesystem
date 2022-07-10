@@ -195,7 +195,18 @@ getShortBasename('file.tar.gz') // 'file'
 
 ### readFileLineByLine
 ```ts
-function readFileLineByLine(filename: string, encoding: BufferEncoding = 'utf-8'): AsyncIterable<string>
+function readFileLineByLine(
+  filename: string
+, encoding: BufferEncoding = 'utf-8'
+): AsyncIterable<string>
+```
+
+### readFileLineByLineSync
+```ts
+function* readFileLineByLineSync(
+  filename: string
+, encoding: BufferEncoding = 'utf-8'
+): Iterable<string>
 ```
 
 ### writeIterableToFile
