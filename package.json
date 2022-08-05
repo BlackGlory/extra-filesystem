@@ -45,11 +45,11 @@
     "@types/jest": "^27.4.1",
     "@types/node": "14",
     "@types/tmp": "^0.2.3",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "eslint": "^8.19.0",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.21.0",
     "husky": "^4.3.0",
-    "iterable-operator": "^1.1.0",
+    "iterable-operator": "^1.2.0",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
     "npm-run-all": "^4.1.5",
@@ -61,8 +61,8 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@blackglory/pass": "^1.0.0",
-    "extra-promise": "^2.2.0",
+    "@blackglory/pass": "^1.0.1",
+    "extra-promise": "^2.4.0",
     "fs-extra": "^10.1.0",
     "tmp-promise": "^3.0.3"
   }
