@@ -10,7 +10,7 @@ describe(`
   , predicate: (dirname: string) => boolean
   ): AsyncIterable<string>
 `, () => {
-  it('return absolute paths', async () => {
+  it('returns joined paths', async () => {
     const fn = jest.fn().mockReturnValue(true)
 
     const result = findAllFilenames(getFixtureFilename('nested'), fn)
