@@ -79,12 +79,18 @@ function pathExistsSync(path: string): boolean
 
 ### readJSONFile
 ```ts
-function readJSONFile<T>(filename: string): Promise<T>
+function readJSONFile<T>(
+  filename: string
+, encoding: BufferEncoding = 'utf-8'
+): Promise<T>
 ```
 
 ### readJSONFileSync
 ```ts
-function readJSONFileSync<T>(filename: string): T
+function readJSONFileSync<T>(
+  filename: string
+, encoding: BufferEncoding = 'utf-8'
+): T
 ```
 
 ### writeJSONFile
