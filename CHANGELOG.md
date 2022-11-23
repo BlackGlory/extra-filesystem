@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.8](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.7...v0.4.8) (2022-11-23)
+
+
+### Features
+
+* add `readNDJSONFile`, `readNDJSONFileSync` ([bdd3fad](https://github.com/BlackGlory/extra-filesystem/commit/bdd3fad26de5314754b56c845708a42c39d8ab07))
+
 ### [0.4.7](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.6...v0.4.7) (2022-11-23)
 
 ### [0.4.6](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.5...v0.4.6) (2022-10-22)
