@@ -3,7 +3,7 @@ import * as fs from 'fs'
 export function* readFileLineByLineSync(
   filename: string
 , encoding: BufferEncoding = 'utf-8'
-): Iterable<string> {
+): IterableIterator<string> {
   const fd = fs.openSync(filename, 'r')
   const bufferSize = 1024 * 64
   const buffer = Buffer.alloc(bufferSize)

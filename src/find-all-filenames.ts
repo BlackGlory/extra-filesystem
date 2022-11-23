@@ -4,7 +4,7 @@ import * as path from 'path'
 export async function* findAllFilenames(
   dirname: string
 , predicate: (dirname: string) => boolean = _ => true
-): AsyncIterable<string> {
+): AsyncIterableIterator<string> {
   const dirents = await fs.readdir(dirname, { withFileTypes: true })
   for (const dirent of dirents) {
     if (dirent.isDirectory()) {

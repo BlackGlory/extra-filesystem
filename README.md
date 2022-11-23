@@ -160,7 +160,7 @@ function isReadable(path: string): Promise<boolean>
 function findAllFilenames(
   dirname: string
 , predicate: (dirname: string) => boolean = _ => true
-): AsyncIterable<string>
+): AsyncIterableIterator<string>
 ```
 
 ### findAllDirnames
@@ -168,7 +168,7 @@ function findAllFilenames(
 function findAllDirnames(
   dirname: string
 , predicate: (dirname: string) => boolean = _ => true
-): AsyncIterable<string>
+): AsyncIterableIterator<string>
 ```
 
 ### getLongExtension
@@ -206,7 +206,7 @@ function readFileLineByLine(
 function* readFileLineByLineSync(
   filename: string
 , encoding: BufferEncoding = 'utf-8'
-): Iterable<string>
+): IterableIterator<string>
 ```
 
 ### writeIterableToFile

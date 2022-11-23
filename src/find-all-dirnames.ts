@@ -4,7 +4,7 @@ import * as path from 'path'
 export async function* findAllDirnames(
   dirname: string
 , predicate: (dirname: string) => boolean = _ => true
-): AsyncIterable<string> {
+): AsyncIterableIterator<string> {
   const subDirnames = await getSubDirnames(dirname)
   for (const dirname of subDirnames) {
     if (predicate(dirname)) {
