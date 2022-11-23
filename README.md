@@ -77,6 +77,22 @@ function pathExists(path: string): Promise<boolean>
 function pathExistsSync(path: string): boolean
 ```
 
+### readNDJSONFile
+```ts
+function readNDJSONFile<T>(
+  filename: string
+, encoding: BufferEncoding = 'utf-8'
+): AsyncIterableIterator<T>
+```
+
+### readNDJSONFileSync
+```ts
+function readNDJSONFileSync<T>(
+  filename: string
+, encoding: BufferEncoding = 'utf-8'
+): IterableIterator<T>
+```
+
 ### readJSONFile
 ```ts
 function readJSONFile<T>(

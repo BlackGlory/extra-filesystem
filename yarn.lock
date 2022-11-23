@@ -2939,7 +2939,7 @@ extra-timers@^0.2.5:
   dependencies:
     extra-rand "^0.1.1"
 
-extra-utils@^3.3.0:
+extra-utils@^3.3.0, extra-utils@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/extra-utils/-/extra-utils-3.3.1.tgz#c8d526a38f6071efd6275ab3b5eb4ca0f85bcd0b"
   integrity sha512-S+M1zExGiPNXoltNvg9fDooaT0RQmgpRYCQd4ZUFL8yVBG/HUzQUFrSoUhskDb4oTYGYfHBVhe4L3kAzPaG1RQ==
