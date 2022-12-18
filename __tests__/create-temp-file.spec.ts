@@ -1,14 +1,11 @@
 import { createTempFile } from '@src/create-temp-file'
-import * as os from 'os'
+import os from 'os'
 import { isFile } from '@src/is-file'
-import '@blackglory/jest-matchers'
-import 'jest-extended'
+import { assert } from '@blackglory/prelude'
 
 test('createTempFile(): Promise<string>', async () => {
-  const result = createTempFile()
-  const proResult = await result
+  const result = await createTempFile()
 
-  expect(result).toBePromise()
-  expect(proResult).toStartWith(os.tmpdir())
-  expect(await isFile(proResult)).toBe(true)
+  assert(result.startsWith(os.tmpdir()))
+  expect(await isFile(result)).toBe(true)
 })

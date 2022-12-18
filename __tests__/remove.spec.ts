@@ -4,7 +4,6 @@ import { ensureDir } from '@src/ensure-dir'
 import { emptyDir } from '@src/empty-dir'
 import { ensureFile } from '@src/ensure-file'
 import { pathExists } from '@src/path-exists'
-import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -17,11 +16,8 @@ describe('remove(path: string): Promise<void>', () => {
     const filename = getTempFilename('file')
     await ensureFile(filename)
 
-    const result = remove(filename)
-    const proResult = await result
+    await remove(filename)
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(filename)).toBe(false)
   })
 
@@ -29,11 +25,8 @@ describe('remove(path: string): Promise<void>', () => {
     const dirname = getTempFilename('directory')
     await ensureDir(dirname)
 
-    const result = remove(dirname)
-    const proResult = await result
+    await remove(dirname)
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(dirname)).toBe(false)
   })
 
@@ -42,11 +35,8 @@ describe('remove(path: string): Promise<void>', () => {
     await ensureDir(dirname)
     await ensureFile(getTempFilename('directory/file'))
 
-    const result = remove(dirname)
-    const proResult = await result
+    await remove(dirname)
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(dirname)).toBe(false)
   })
 })

@@ -1,10 +1,9 @@
 import { writeIterableToFile } from '@src/write-iterable-to-file'
 import { getTempFilename } from '@test/utils'
-import * as fs from 'fs/promises'
+import fs from 'fs/promises'
 import { emptyDir } from '@src/empty-dir'
 import { ensureDir } from '@src/ensure-dir'
 import { remove } from '@src/remove'
-import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -21,11 +20,8 @@ test(`
   const data = 'hello'
   const filename = getTempFilename('file')
 
-  const result = writeIterableToFile(filename, toIterable(data))
-  const proResult = await result
+  await writeIterableToFile(filename, toIterable(data))
 
-  expect(result).toBePromise()
-  expect(proResult).toBeUndefined()
   expect(await fs.readFile(filename, 'utf-8')).toBe(data)
 })
 
@@ -38,11 +34,8 @@ test(`
   const data = 'hello'
   const filename = getTempFilename('file')
 
-  const result = writeIterableToFile(filename, toAsyncIterable(data))
-  const proResult = await result
+  await writeIterableToFile(filename, toAsyncIterable(data))
 
-  expect(result).toBePromise()
-  expect(proResult).toBeUndefined()
   expect(await fs.readFile(filename, 'utf-8')).toBe(data)
 })
 

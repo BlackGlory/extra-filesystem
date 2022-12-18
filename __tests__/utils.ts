@@ -1,5 +1,5 @@
-import * as path from 'path'
-import * as os from 'os'
+import path from 'path'
+import os from 'os'
 
 export function getFixtureFilename(relativePath: string): string {
   return path.join(__dirname, './fixtures', relativePath)

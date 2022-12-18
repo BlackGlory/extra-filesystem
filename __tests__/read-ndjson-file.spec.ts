@@ -1,14 +1,12 @@
 import { readNDJSONFile } from '@src/read-ndjson-file'
 import { getFixtureFilename } from '@test/utils'
 import { toArrayAsync } from 'iterable-operator'
-import '@blackglory/jest-matchers'
 
 test('readNDJSONFile', async () => {
-  const result = readNDJSONFile<string>(getFixtureFilename('data.ndjson'))
-  const proResult = await toArrayAsync(result)
+  const iter = readNDJSONFile<string>(getFixtureFilename('data.ndjson'))
+  const result = await toArrayAsync(iter)
 
-  expect(result).toBeAsyncIterable()
-  expect(proResult).toStrictEqual([
+  expect(result).toStrictEqual([
     'foo'
   , 'bar'
   ])

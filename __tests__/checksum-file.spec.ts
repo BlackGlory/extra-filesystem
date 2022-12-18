@@ -1,7 +1,7 @@
 import { checksumFile } from '@src/checksum-file'
 import { getFixtureFilename } from '@test/utils'
 import { getErrorPromise } from 'return-style'
-import 'jest-extended'
+import { assert } from '@blackglory/prelude'
 
 describe('checksumFile(algorithm: string, filename: string): Promise<string>', () => {
   describe('file exists', () => {
@@ -16,7 +16,7 @@ describe('checksumFile(algorithm: string, filename: string): Promise<string>', (
     it('throw error', async () => {
       const err = await getErrorPromise(checksumFile('md5', getFixtureFilename('not-found')))
 
-      expect(err?.message).toStartWith('ENOENT')
+      assert(err?.message.startsWith('ENOENT'))
     })
   })
 })

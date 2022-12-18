@@ -1,14 +1,11 @@
 import { createTempDir } from '@src/create-temp-dir'
-import * as os from 'os'
+import os from 'os'
 import { isDirectory } from '@src/is-directory'
-import '@blackglory/jest-matchers'
-import 'jest-extended'
+import { assert } from '@blackglory/prelude'
 
 test('createTempDir(): Promise<string>', async () => {
-  const result = createTempDir()
-  const proResult = await result
+  const result = await createTempDir()
 
-  expect(result).toBePromise()
-  expect(proResult).toStartWith(os.tmpdir())
-  expect(await isDirectory(proResult)).toBe(true)
+  assert(result.startsWith(os.tmpdir()))
+  expect(await isDirectory(result)).toBe(true)
 })

@@ -5,8 +5,7 @@ import { ensureDirSync } from '@src/ensure-dir-sync'
 import { ensureFileSync } from '@src/ensure-file-sync'
 import { emptyDir } from '@src/empty-dir'
 import { emptyDirSync } from '@src/empty-dir-sync'
-import * as fs from 'fs'
-import '@blackglory/jest-matchers'
+import fs from 'fs'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))

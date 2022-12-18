@@ -5,8 +5,7 @@ import { emptyDir } from '@src/empty-dir'
 import { ensureFile } from '@src/ensure-file'
 import { remove } from '@src/remove'
 import { pathExists } from '@src/path-exists'
-import * as fs from 'fs/promises'
-import '@blackglory/jest-matchers'
+import fs from 'fs/promises'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -20,11 +19,8 @@ describe('copy(sourcePath: string, destinationPath: string): Promise<void>', () 
     const destinationFilename = getTempFilename('new-file')
     await ensureFile(sourceFilename)
 
-    const result = copy(sourceFilename, destinationFilename)
-    const proResult = await result
+    await copy(sourceFilename, destinationFilename)
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(sourceFilename)).toBe(true)
     expect(await pathExists(destinationFilename)).toBe(true)
   })
@@ -36,12 +32,9 @@ describe('copy(sourcePath: string, destinationPath: string): Promise<void>', () 
     await fs.writeFile(sourceFilename, sourceFileContent, 'utf-8')
     await ensureFile(destinationFilename)
 
-    const result = copy(sourceFilename, destinationFilename)
-    const proResult = await result
+    await copy(sourceFilename, destinationFilename)
     const destinationFileContent = await fs.readFile(destinationFilename, 'utf-8')
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(sourceFilename)).toBe(true)
     expect(await pathExists(destinationFilename)).toBe(true)
     expect(destinationFileContent).toBe(sourceFileContent)
@@ -52,11 +45,8 @@ describe('copy(sourcePath: string, destinationPath: string): Promise<void>', () 
     const destinationDirname = getTempFilename('new-directory')
     await ensureDir(sourceDirname)
 
-    const result = copy(sourceDirname, destinationDirname)
-    const proResult = await result
+    await copy(sourceDirname, destinationDirname)
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(sourceDirname)).toBe(true)
     expect(await pathExists(destinationDirname)).toBe(true)
   })

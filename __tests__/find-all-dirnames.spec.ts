@@ -1,8 +1,6 @@
 import { findAllDirnames } from '@src/find-all-dirnames'
 import { getFixtureFilename } from '@test/utils'
 import { toArrayAsync } from 'iterable-operator'
-import '@blackglory/jest-matchers'
-import 'jest-extended'
 
 describe(`
   findAllDirnames(
@@ -14,11 +12,10 @@ describe(`
     const fn = jest.fn().mockReturnValue(true)
     const dirname = getFixtureFilename('nested')
 
-    const result = findAllDirnames(dirname, fn)
-    const proResult = await toArrayAsync(result)
+    const iter = findAllDirnames(dirname, fn)
+    const result = await toArrayAsync(iter)
 
-    expect(result).toBeAsyncIterable()
-    expect(proResult).toIncludeSameMembers([
+    expect(result).toMatchObject([
       getFixtureFilename('nested/directory')
     , getFixtureFilename('nested/directory/deep-directory')
     ])
@@ -31,11 +28,10 @@ describe(`
     const fn = jest.fn().mockReturnValue(false)
     const dirname = getFixtureFilename('nested')
 
-    const result = findAllDirnames(dirname, fn)
-    const proResult = await toArrayAsync(result)
+    const iter = findAllDirnames(dirname, fn)
+    const result = await toArrayAsync(iter)
 
-    expect(result).toBeAsyncIterable()
-    expect(proResult).toStrictEqual([])
+    expect(result).toStrictEqual([])
     expect(fn).toBeCalledTimes(1)
     expect(fn).nthCalledWith(1, getFixtureFilename('nested/directory'))
   })

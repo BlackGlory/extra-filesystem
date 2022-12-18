@@ -1,6 +1,5 @@
 import { pathExistsSync } from '@src/path-exists-sync'
 import { getFixtureFilename } from '@test/utils'
-import '@blackglory/jest-matchers'
 
 describe('pathExistsSync(path: string): boolean', () => {
   describe('exist', () => {

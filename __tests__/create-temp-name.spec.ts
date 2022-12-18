@@ -1,14 +1,11 @@
 import { createTempName } from '@src/create-temp-name'
 import { pathExists } from '@src/path-exists'
-import * as os from 'os'
-import '@blackglory/jest-matchers'
-import 'jest-extended'
+import os from 'os'
+import { assert } from '@blackglory/prelude'
 
 test('createTempName(): Promise<string>', async () => {
-  const result = createTempName()
-  const proResult = await result
+  const result = await createTempName()
 
-  expect(result).toBePromise()
-  expect(proResult).toStartWith(os.tmpdir())
-  expect(await pathExists(proResult)).toBe(false)
+  assert(result.startsWith(os.tmpdir()))
+  expect(await pathExists(result)).toBe(false)
 })

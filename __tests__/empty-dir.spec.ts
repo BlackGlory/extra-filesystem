@@ -3,8 +3,7 @@ import { getTempFilename } from '@test/utils'
 import { ensureDir } from '@src/ensure-dir'
 import { ensureFile } from '@src/ensure-file'
 import { emptyDir } from '@src/empty-dir'
-import * as fs from 'fs/promises'
-import '@blackglory/jest-matchers'
+import fs from 'fs/promises'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -17,10 +16,7 @@ test('emptyDir(dirname: string): Promise<void>', async () => {
   await ensureDir(`${dirname}/directory`)
   await ensureFile(`${dirname}/file`)
 
-  const result = emptyDir(dirname)
-  const proResult = await result
+  await emptyDir(dirname)
 
-  expect(result).toBePromise()
-  expect(proResult).toBeUndefined()
   expect(await fs.readdir(dirname)).toEqual([])
 })

@@ -4,7 +4,6 @@ import { ensureDir } from '@src/ensure-dir'
 import { emptyDir } from '@src/empty-dir'
 import { ensureFileSync } from '@src/ensure-file-sync'
 import { pathExistsSync } from '@src/path-exists-sync'
-import '@blackglory/jest-matchers'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))

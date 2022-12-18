@@ -1,12 +1,11 @@
 import { createTempDirSync } from '@src/create-temp-dir-sync'
-import * as os from 'os'
+import os from 'os'
 import { isDirectorySync } from '@src/is-directory-sync'
-import '@blackglory/jest-matchers'
-import 'jest-extended'
+import { assert } from '@blackglory/prelude'
 
 test('createTempDirSync(): string', () => {
   const result = createTempDirSync()
 
-  expect(result).toStartWith(os.tmpdir())
+  assert(result.startsWith(os.tmpdir()))
   expect(isDirectorySync(result)).toBe(true)
 })

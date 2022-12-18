@@ -5,8 +5,7 @@ import { emptyDir } from '@src/empty-dir'
 import { ensureFile } from '@src/ensure-file'
 import { remove } from '@src/remove'
 import { pathExists } from '@src/path-exists'
-import * as fs from 'fs/promises'
-import '@blackglory/jest-matchers'
+import fs from 'fs/promises'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -20,11 +19,8 @@ describe('move(oldPath: string, newPath: string): Promise<void>', () => {
     const newFilename = getTempFilename('new-file')
     await ensureFile(oldFilename)
 
-    const result = move(oldFilename, newFilename)
-    const proResult = await result
+    await move(oldFilename, newFilename)
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(oldFilename)).toBe(false)
     expect(await pathExists(newFilename)).toBe(true)
   })
@@ -36,12 +32,9 @@ describe('move(oldPath: string, newPath: string): Promise<void>', () => {
     await fs.writeFile(oldFilename, oldFileContent, 'utf-8')
     await ensureFile(newFilename)
 
-    const result = move(oldFilename, newFilename)
-    const proResult = await result
+    await move(oldFilename, newFilename)
     const newFileContent = await fs.readFile(newFilename, 'utf-8')
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(oldFilename)).toBe(false)
     expect(await pathExists(newFilename)).toBe(true)
     expect(newFileContent).toBe(oldFileContent)
@@ -52,11 +45,8 @@ describe('move(oldPath: string, newPath: string): Promise<void>', () => {
     const newDirname = getTempFilename('new-directory')
     await ensureDir(oldDirname)
 
-    const result = move(oldDirname, newDirname)
-    const proResult = await result
+    await move(oldDirname, newDirname)
 
-    expect(result).toBePromise()
-    expect(proResult).toBeUndefined()
     expect(await pathExists(oldDirname)).toBe(false)
     expect(await pathExists(newDirname)).toBe(true)
   })
