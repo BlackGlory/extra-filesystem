@@ -143,6 +143,16 @@ function writeJSONFileSync(
 ): void
 ```
 
+### writeYAMLFile
+```ts
+function writeYAMLFile(filename: string, data: unknown): Promise<void>
+```
+
+### writeYAMLFileSync
+```ts
+function writeYAMLFileSync(filename: string, data: unknown): void
+```
+
 ### move
 ```ts
 function move(oldPath: string, newPath: string): Promise<void>
