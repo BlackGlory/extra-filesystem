@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.9](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.8...v0.4.9) (2023-01-26)
+
+
+### Features
+
+* add `readYAMLFile`, `readYAMLFileSync` ([8f012ef](https://github.com/BlackGlory/extra-filesystem/commit/8f012eff065b66fc05d75c19f9e651d105bfea47))
+
 ### [0.4.8](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.7...v0.4.8) (2022-11-23)
 
 
