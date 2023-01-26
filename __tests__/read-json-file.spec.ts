@@ -4,5 +4,5 @@ import { getFixtureFilename } from '@test/utils'
 test('readJSONFile(filename: string): Promise<string>', async () => {
   const result = await readJSONFile<string>(getFixtureFilename('data.json'))
 
-  expect(result).toBe('json')
+  expect(result).toBe('yaml')
 })

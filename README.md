@@ -93,6 +93,22 @@ function readNDJSONFileSync<T>(
 ): IterableIterator<T>
 ```
 
+### readYAMLFile
+```ts
+function readYAMLFile<T>(
+  filename: string
+, encoding: BufferEncoding = 'utf-8'
+): Promise<T>
+```
+
+### readYAMLFileSync
+```ts
+function readYAMLFileSync<T>(
+  filename: string
+, encoding: BufferEncoding = 'utf-8'
+): T
+```
+
 ### readJSONFile
 ```ts
 function readJSONFile<T>(
