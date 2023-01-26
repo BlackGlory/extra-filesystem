@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.10](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.9...v0.4.10) (2023-01-26)
+
+
+### Features
+
+* add `writeYAMLFile`, `writeYAMLFileSync` ([84fa6e6](https://github.com/BlackGlory/extra-filesystem/commit/84fa6e66906fb90737083d5f3ad9d40ab99a52df))
+
 ### [0.4.9](https://github.com/BlackGlory/extra-filesystem/compare/v0.4.8...v0.4.9) (2023-01-26)
 
 
