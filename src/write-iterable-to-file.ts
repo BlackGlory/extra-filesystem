@@ -1,8 +1,6 @@
 import fs from 'fs'
 import stream from 'stream'
-import { promisify } from 'util'
-
-const pipeline = promisify(stream.pipeline)
+import { pipeline } from 'stream/promises'
 
 export async function writeIterableToFile(
   filename: string
