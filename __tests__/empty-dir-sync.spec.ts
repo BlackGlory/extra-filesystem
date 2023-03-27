@@ -1,10 +1,10 @@
-import { remove } from '@src/remove'
-import { getTempFilename } from '@test/utils'
-import { ensureDir } from '@src/ensure-dir'
-import { ensureDirSync } from '@src/ensure-dir-sync'
-import { ensureFileSync } from '@src/ensure-file-sync'
-import { emptyDir } from '@src/empty-dir'
-import { emptyDirSync } from '@src/empty-dir-sync'
+import { remove } from '@src/remove.js'
+import { getTempFilename } from '@test/utils.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { ensureDirSync } from '@src/ensure-dir-sync.js'
+import { ensureFileSync } from '@src/ensure-file-sync.js'
+import { emptyDir } from '@src/empty-dir.js'
+import { emptyDirSync } from '@src/empty-dir-sync.js'
 import fs from 'fs'
 
 beforeEach(async () => {
@@ -13,7 +13,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-test('emptyDirSync(dirname: string): void', () => {
+test('emptyDirSync', () => {
   const dirname = getTempFilename('directory')
   ensureDirSync(`${dirname}/directory`)
   ensureFileSync(`${dirname}/file`)

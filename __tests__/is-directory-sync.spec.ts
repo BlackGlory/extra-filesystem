@@ -1,7 +1,7 @@
-import { isDirectorySync } from '@src/is-directory-sync'
-import { getFixtureFilename } from '@test/utils'
+import { isDirectorySync } from '@src/is-directory-sync.js'
+import { getFixtureFilename } from '@test/utils.js'
 
-describe('isDirectorySync(path: string): boolean', () => {
+describe('isDirectorySync', () => {
   describe('target is a directory', () => {
     it('return true', () => {
       const result = isDirectorySync(getFixtureFilename('directory'))

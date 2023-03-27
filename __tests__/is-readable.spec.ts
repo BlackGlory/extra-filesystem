@@ -1,10 +1,10 @@
-import { isReadable } from '@src/is-readable'
-import { getFixtureFilename, getTempFilename } from '@test/utils'
-import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from '@src/empty-dir'
+import { isReadable } from '@src/is-readable.js'
+import { getFixtureFilename, getTempFilename } from '@test/utils.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { emptyDir } from '@src/empty-dir.js'
 import fs from 'fs/promises'
-import { ensureFile } from '@src/ensure-file'
-import { remove } from '@src/remove'
+import { ensureFile } from '@src/ensure-file.js'
+import { remove } from '@src/remove.js'
 
 // If we set an unreadable fixture,
 // then we cannot commit the fixture to the repository (permission denied).
@@ -15,7 +15,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-describe('isReadable(path: string): Promise<boolean>', () => {
+describe('isReadable', () => {
   describe('target is readable', () => {
     it('return true', async () => {
       const result = await isReadable(getFixtureFilename('file'))

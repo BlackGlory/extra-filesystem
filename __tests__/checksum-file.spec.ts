@@ -1,9 +1,9 @@
-import { checksumFile } from '@src/checksum-file'
-import { getFixtureFilename } from '@test/utils'
+import { checksumFile } from '@src/checksum-file.js'
+import { getFixtureFilename } from '@test/utils.js'
 import { getErrorPromise } from 'return-style'
 import { assert } from '@blackglory/prelude'
 
-describe('checksumFile(algorithm: string, filename: string): Promise<string>', () => {
+describe('checksumFile', () => {
   describe('file exists', () => {
     it('return hex string', async () => {
       const result = await checksumFile('md5', getFixtureFilename('file'))

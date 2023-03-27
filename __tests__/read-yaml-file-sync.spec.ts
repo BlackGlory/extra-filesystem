@@ -1,5 +1,5 @@
-import { readYAMLFileSync } from '@src/read-yaml-file-sync'
-import { getFixtureFilename } from '@test/utils'
+import { readYAMLFileSync } from '@src/read-yaml-file-sync.js'
+import { getFixtureFilename } from '@test/utils.js'
 
 test('readYAMLFileSync', () => {
   const result = readYAMLFileSync(getFixtureFilename('data.json'))

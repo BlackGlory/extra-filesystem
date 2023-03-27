@@ -1,9 +1,9 @@
-import { remove } from '@src/remove'
-import { getTempFilename } from '@test/utils'
-import { ensureDir } from '@src/ensure-dir'
-import { ensureDirSync } from '@src/ensure-dir-sync'
-import { emptyDir } from '@src/empty-dir'
-import { pathExistsSync } from '@src/path-exists-sync'
+import { remove } from '@src/remove.js'
+import { getTempFilename } from '@test/utils.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { ensureDirSync } from '@src/ensure-dir-sync.js'
+import { emptyDir } from '@src/empty-dir.js'
+import { pathExistsSync } from '@src/path-exists-sync.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -11,7 +11,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-describe('ensureDirSync(dirname: string): void', () => {
+describe('ensureDirSync', () => {
   test('directory exists', async () => {
     const dirname = getTempFilename('directory')
     ensureDirSync(dirname)

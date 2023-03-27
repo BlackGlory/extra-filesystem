@@ -1,7 +1,7 @@
-import * as fs from 'fs/promises'
-import { remove } from './remove'
+import fs from 'fs/promises'
+import { remove } from './remove.js'
 import { each } from 'extra-promise'
-import * as path from 'path'
+import path from 'path'
 
 export async function emptyDir(dirname: string): Promise<void> {
   const names = await fs.readdir(dirname)

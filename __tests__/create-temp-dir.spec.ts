@@ -1,9 +1,9 @@
-import { createTempDir } from '@src/create-temp-dir'
+import { createTempDir } from '@src/create-temp-dir.js'
 import os from 'os'
-import { isDirectory } from '@src/is-directory'
+import { isDirectory } from '@src/is-directory.js'
 import { assert } from '@blackglory/prelude'
 
-test('createTempDir(): Promise<string>', async () => {
+test('createTempDir', async () => {
   const result = await createTempDir()
 
   assert(result.startsWith(os.tmpdir()))

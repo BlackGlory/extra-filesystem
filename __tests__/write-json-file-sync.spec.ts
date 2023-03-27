@@ -1,9 +1,9 @@
-import { writeJSONFileSync } from '@src/write-json-file-sync'
-import { getTempFilename } from '@test/utils'
+import { writeJSONFileSync } from '@src/write-json-file-sync.js'
+import { getTempFilename } from '@test/utils.js'
 import { readFileSync } from 'fs'
-import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from '@src/empty-dir'
-import { remove } from '@src/remove'
+import { ensureDir } from '@src/ensure-dir.js'
+import { emptyDir } from '@src/empty-dir.js'
+import { remove } from '@src/remove.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -11,13 +11,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-test(`
-  writeJSONFileSync(
-    filename: string
-  , data: unknown
-  , options: { spaces?: number }
-  ): void
-`, () => {
+test('writeJSONFileSync', () => {
   const data = { json: 'json' }
   const filename = getTempFilename('json-file')
 

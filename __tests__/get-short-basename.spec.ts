@@ -1,6 +1,6 @@
-import { getShortBasename } from '@src/get-short-basename'
+import { getShortBasename } from '@src/get-short-basename.js'
 
-test('getShortBasename(filename: string): string', () => {
+test('getShortBasename', () => {
   const filename = 'file.tar.gz'
 
   const result = getShortBasename(filename)

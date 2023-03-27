@@ -1,7 +1,7 @@
-import { isFile } from '@src/is-file'
-import { getFixtureFilename } from '@test/utils'
+import { isFile } from '@src/is-file.js'
+import { getFixtureFilename } from '@test/utils.js'
 
-describe('isFile(path: string): Promise<boolean>', () => {
+describe('isFile', () => {
   describe('target is a file', () => {
     it('return true', async () => {
       const result = await isFile(getFixtureFilename('file'))

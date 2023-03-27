@@ -1,9 +1,9 @@
-import { writeYAMLFile } from '@src/write-yaml-file'
-import { getTempFilename } from '@test/utils'
+import { writeYAMLFile } from '@src/write-yaml-file.js'
+import { getTempFilename } from '@test/utils.js'
 import fs from 'fs/promises'
-import { emptyDir } from '@src/empty-dir'
-import { ensureDir } from '@src/ensure-dir'
-import { remove } from '@src/remove'
+import { emptyDir } from '@src/empty-dir.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { remove } from '@src/remove.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))

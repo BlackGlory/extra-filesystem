@@ -1,5 +1,5 @@
-import { findUpPackageFilename } from '@src/find-up-package-filename'
-import { getFixtureFilename } from './utils'
+import { findUpPackageFilename } from '@src/find-up-package-filename.js'
+import { getFixtureFilename } from '@test/utils.js'
 
 describe('findUpPackageFilenameSync', () => {
   test('find up', async () => {

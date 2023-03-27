@@ -1,15 +1,11 @@
-import { findAllDirnames } from '@src/find-all-dirnames'
-import { getFixtureFilename } from '@test/utils'
+import { findAllDirnames } from '@src/find-all-dirnames.js'
+import { getFixtureFilename } from '@test/utils.js'
 import { toArrayAsync } from 'iterable-operator'
+import { jest } from '@jest/globals'
 
-describe(`
-  findAllDirnames(
-    dirname: string
-  , predicate: (dirname: string) => boolean
-  ): AsyncIterable<string>
-`, () => {
+describe('findAllDirnames', () => {
   it('returns joined paths', async () => {
-    const fn = jest.fn().mockReturnValue(true)
+    const fn = jest.fn(() => true)
     const dirname = getFixtureFilename('nested')
 
     const iter = findAllDirnames(dirname, fn)
@@ -25,7 +21,7 @@ describe(`
   })
 
   test('predicate returns false', async () => {
-    const fn = jest.fn().mockReturnValue(false)
+    const fn = jest.fn(() => false)
     const dirname = getFixtureFilename('nested')
 
     const iter = findAllDirnames(dirname, fn)

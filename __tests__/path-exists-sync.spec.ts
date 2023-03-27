@@ -1,7 +1,7 @@
-import { pathExistsSync } from '@src/path-exists-sync'
-import { getFixtureFilename } from '@test/utils'
+import { pathExistsSync } from '@src/path-exists-sync.js'
+import { getFixtureFilename } from '@test/utils.js'
 
-describe('pathExistsSync(path: string): boolean', () => {
+describe('pathExistsSync', () => {
   describe('exist', () => {
     test('directory', () => {
       const result = pathExistsSync(getFixtureFilename('file'))

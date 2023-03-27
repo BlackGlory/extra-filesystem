@@ -1,13 +1,8 @@
-import { readFileLineByLine } from '@src/read-file-line-by-line'
-import { getFixtureFilename } from '@test/utils'
+import { readFileLineByLine } from '@src/read-file-line-by-line.js'
+import { getFixtureFilename } from '@test/utils.js'
 import { toArrayAsync } from 'iterable-operator'
 
-test(`
-  readFileLineByLine(
-    filename: string
-  , encoding: string
-  ): AsyncIterable<string>
-`, async () => {
+test('readFileLineByLine', async () => {
   const iter = readFileLineByLine(getFixtureFilename('multiline'))
   const result = await toArrayAsync(iter)
 

@@ -1,4 +1,4 @@
-import * as fs from 'fs/promises'
+import fs from 'fs/promises'
 
 export async function readJSONFile<T>(
   filename: string

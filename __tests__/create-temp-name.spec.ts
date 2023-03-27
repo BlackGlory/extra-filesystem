@@ -1,9 +1,9 @@
-import { createTempName } from '@src/create-temp-name'
-import { pathExists } from '@src/path-exists'
+import { createTempName } from '@src/create-temp-name.js'
+import { pathExists } from '@src/path-exists.js'
 import os from 'os'
 import { assert } from '@blackglory/prelude'
 
-test('createTempName(): Promise<string>', async () => {
+test('createTempName', async () => {
   const result = await createTempName()
 
   assert(result.startsWith(os.tmpdir()))

@@ -1,7 +1,7 @@
-import { pathExists } from '@src/path-exists'
-import { getFixtureFilename } from '@test/utils'
+import { pathExists } from '@src/path-exists.js'
+import { getFixtureFilename } from '@test/utils.js'
 
-describe('pathExists(path: string): Promise<boolean>', () => {
+describe('pathExists', () => {
   describe('exist', () => {
     test('directory', async () => {
       const result = await pathExists(getFixtureFilename('file'))

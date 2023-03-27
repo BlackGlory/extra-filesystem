@@ -1,9 +1,9 @@
-import { writeIterableToFile } from '@src/write-iterable-to-file'
-import { getTempFilename } from '@test/utils'
+import { writeIterableToFile } from '@src/write-iterable-to-file.js'
+import { getTempFilename } from '@test/utils.js'
 import fs from 'fs/promises'
-import { emptyDir } from '@src/empty-dir'
-import { ensureDir } from '@src/ensure-dir'
-import { remove } from '@src/remove'
+import { emptyDir } from '@src/empty-dir.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { remove } from '@src/remove.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -11,32 +11,24 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-test(`
-  writeIterableToFile(
-    filename: string
-  , iterable: Iterable<string>
-  ): Promise<void>
-`, async () => {
-  const data = 'hello'
-  const filename = getTempFilename('file')
+describe('writeIterableToFile', () => {
+  test('iterable', async () => {
+    const data = 'hello'
+    const filename = getTempFilename('file')
 
-  await writeIterableToFile(filename, toIterable(data))
+    await writeIterableToFile(filename, toIterable(data))
 
-  expect(await fs.readFile(filename, 'utf-8')).toBe(data)
-})
+    expect(await fs.readFile(filename, 'utf-8')).toBe(data)
+  })
 
-test(`
-  writeIterableToFile(
-    filename: string
-  , iterable: AsyncIterable<string>
-  ): Promise<void>
-`, async () => {
-  const data = 'hello'
-  const filename = getTempFilename('file')
+  test('async iterable', async () => {
+    const data = 'hello'
+    const filename = getTempFilename('file')
 
-  await writeIterableToFile(filename, toAsyncIterable(data))
+    await writeIterableToFile(filename, toAsyncIterable(data))
 
-  expect(await fs.readFile(filename, 'utf-8')).toBe(data)
+    expect(await fs.readFile(filename, 'utf-8')).toBe(data)
+  })
 })
 
 function* toIterable<T>(iterable: Iterable<T>): Iterable<T> {

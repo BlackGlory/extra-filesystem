@@ -1,9 +1,9 @@
-import { writeJSONFile } from '@src/write-json-file'
-import { getTempFilename } from '@test/utils'
+import { writeJSONFile } from '@src/write-json-file.js'
+import { getTempFilename } from '@test/utils.js'
 import fs from 'fs/promises'
-import { emptyDir } from '@src/empty-dir'
-import { ensureDir } from '@src/ensure-dir'
-import { remove } from '@src/remove'
+import { emptyDir } from '@src/empty-dir.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { remove } from '@src/remove.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -11,13 +11,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-test(`
-  writeJSONFile(
-    filename: string
-  , data: unknown
-  , options: { spaces?: number }
-  ): Promise<void>
-`, async () => {
+test('writeJSONFile', async () => {
   const data = { json: 'json' }
   const filename = getTempFilename('json-file')
 

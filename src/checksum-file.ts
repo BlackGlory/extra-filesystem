@@ -1,5 +1,5 @@
-import * as crypto from 'crypto'
-import * as fs from 'fs'
+import crypto from 'crypto'
+import fs from 'fs'
 
 export function checksumFile(algorithm: string, filename: string): Promise<string> {
   return new Promise((resolve, reject) => {

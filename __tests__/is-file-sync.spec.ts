@@ -1,7 +1,7 @@
-import { isFileSync } from '@src/is-file-sync'
-import { getFixtureFilename } from '@test/utils'
+import { isFileSync } from '@src/is-file-sync.js'
+import { getFixtureFilename } from '@test/utils.js'
 
-describe('isFileSync(path: string): boolean', () => {
+describe('isFileSync', () => {
   describe('target is a file', () => {
     it('return true', () => {
       const result = isFileSync(getFixtureFilename('file'))

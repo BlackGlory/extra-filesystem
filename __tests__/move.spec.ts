@@ -1,10 +1,10 @@
-import { move } from '@src/move'
-import { getTempFilename } from '@test/utils'
-import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from '@src/empty-dir'
-import { ensureFile } from '@src/ensure-file'
-import { remove } from '@src/remove'
-import { pathExists } from '@src/path-exists'
+import { move } from '@src/move.js'
+import { getTempFilename } from '@test/utils.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { emptyDir } from '@src/empty-dir.js'
+import { ensureFile } from '@src/ensure-file.js'
+import { remove } from '@src/remove.js'
+import { pathExists } from '@src/path-exists.js'
 import fs from 'fs/promises'
 
 beforeEach(async () => {
@@ -13,7 +13,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-describe('move(oldPath: string, newPath: string): Promise<void>', () => {
+describe('move', () => {
   test('file', async () => {
     const oldFilename = getTempFilename('file')
     const newFilename = getTempFilename('new-file')

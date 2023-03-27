@@ -1,9 +1,9 @@
-import { remove } from '@src/remove'
-import { getTempFilename } from '@test/utils'
-import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from '@src/empty-dir'
-import { ensureFile } from '@src/ensure-file'
-import { pathExists } from '@src/path-exists'
+import { remove } from '@src/remove.js'
+import { getTempFilename } from '@test/utils.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { emptyDir } from '@src/empty-dir.js'
+import { ensureFile } from '@src/ensure-file.js'
+import { pathExists } from '@src/path-exists.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -11,7 +11,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-describe('ensureFile(filename: string): Promise<void>', () => {
+describe('ensureFile', () => {
   test('file exists', async () => {
     const filename = getTempFilename('file')
     await ensureFile(filename)

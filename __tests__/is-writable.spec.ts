@@ -1,10 +1,10 @@
-import { isWritable } from '@src/is-writable'
-import { getFixtureFilename, getTempFilename } from '@test/utils'
-import { ensureDir } from '@src/ensure-dir'
-import { emptyDir } from '@src/empty-dir'
-import { remove } from '@src/remove'
+import { isWritable } from '@src/is-writable.js'
+import { getFixtureFilename, getTempFilename } from '@test/utils.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { emptyDir } from '@src/empty-dir.js'
+import { remove } from '@src/remove.js'
 import fs from 'fs/promises'
-import { ensureFile } from '@src/ensure-file'
+import { ensureFile } from '@src/ensure-file.js'
 
 // If we set an unwritable fixture,
 // then ci will failed because git does not keep the file mode.
@@ -15,7 +15,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-describe('isWritable(path: string): Promise<boolean>', () => {
+describe('isWritable', () => {
   describe('target is writable', () => {
     it('return true', async () => {
       const result = await isWritable(getFixtureFilename('file'))

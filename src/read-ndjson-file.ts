@@ -1,5 +1,5 @@
 import { filterAsync, mapAsync } from 'iterable-operator'
-import { readFileLineByLine } from './read-file-line-by-line'
+import { readFileLineByLine } from './read-file-line-by-line.js'
 import { pipe } from 'extra-utils'
 
 export function readNDJSONFile<T>(

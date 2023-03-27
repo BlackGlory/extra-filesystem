@@ -1,5 +1,5 @@
-import * as fs from 'fs/promises'
-import * as YAML from 'js-yaml'
+import fs from 'fs/promises'
+import YAML from 'js-yaml'
 
 export async function readYAMLFile<T>(
   filename: string

@@ -1,13 +1,8 @@
-import { readFileLineByLineSync } from '@src/read-file-line-by-line-sync'
-import { getFixtureFilename } from '@test/utils'
+import { readFileLineByLineSync } from '@src/read-file-line-by-line-sync.js'
+import { getFixtureFilename } from '@test/utils.js'
 import { toArray } from 'iterable-operator'
 
-test(`
-  readFileLineByLineSync(
-    filename: string
-  , encoding: string
-  ): Iterable<string>
-`, () => {
+test('readFileLineByLineSync', () => {
   const iter = readFileLineByLineSync(getFixtureFilename('multiline'))
   const result = toArray(iter)
 

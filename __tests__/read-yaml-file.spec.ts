@@ -1,5 +1,5 @@
-import { readYAMLFile } from '@src/read-yaml-file'
-import { getFixtureFilename } from '@test/utils'
+import { readYAMLFile } from '@src/read-yaml-file.js'
+import { getFixtureFilename } from '@test/utils.js'
 
 test('readYAMLFile', async () => {
   const result = await readYAMLFile(getFixtureFilename('data.json'))

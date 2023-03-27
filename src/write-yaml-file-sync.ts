@@ -1,5 +1,5 @@
-import * as fs from 'fs'
-import * as YAML from 'js-yaml'
+import fs from 'fs'
+import YAML from 'js-yaml'
 
 export function writeYAMLFileSync(filename: string, data: unknown): void {
   const text = YAML.dump(data)

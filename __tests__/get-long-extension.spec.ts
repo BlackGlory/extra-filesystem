@@ -1,6 +1,6 @@
-import { getLongExtension } from '@src/get-long-extension'
+import { getLongExtension } from '@src/get-long-extension.js'
 
-test('getLongExtension(filename: string): string', () => {
+test('getLongExtension', () => {
   const filename = 'file.tar.gz'
 
   const result = getLongExtension(filename)

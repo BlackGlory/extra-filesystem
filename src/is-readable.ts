@@ -1,4 +1,4 @@
-import * as fs from 'fs/promises'
+import fs from 'fs/promises'
 import { constants } from 'fs'
 
 export async function isReadable(path: string): Promise<boolean> {

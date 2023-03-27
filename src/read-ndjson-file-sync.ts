@@ -1,5 +1,5 @@
 import { filter, map } from 'iterable-operator'
-import { readFileLineByLineSync } from './read-file-line-by-line-sync'
+import { readFileLineByLineSync } from './read-file-line-by-line-sync.js'
 import { pipe } from 'extra-utils'
 
 export function readNDJSONFileSync<T>(

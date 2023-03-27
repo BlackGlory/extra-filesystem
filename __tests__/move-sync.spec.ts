@@ -1,11 +1,11 @@
-import { moveSync } from '@src/move-sync'
-import { getTempFilename } from '@test/utils'
-import { ensureDir } from '@src/ensure-dir'
-import { ensureDirSync } from '@src/ensure-dir-sync'
-import { emptyDir } from '@src/empty-dir'
-import { ensureFileSync } from '@src/ensure-file-sync'
-import { remove } from '@src/remove'
-import { pathExistsSync } from '@src/path-exists-sync'
+import { moveSync } from '@src/move-sync.js'
+import { getTempFilename } from '@test/utils.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { ensureDirSync } from '@src/ensure-dir-sync.js'
+import { emptyDir } from '@src/empty-dir.js'
+import { ensureFileSync } from '@src/ensure-file-sync.js'
+import { remove } from '@src/remove.js'
+import { pathExistsSync } from '@src/path-exists-sync.js'
 import fs from 'fs'
 
 beforeEach(async () => {
@@ -14,7 +14,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-describe('moveSync(oldPath: string, newPath: string): void', () => {
+describe('moveSync', () => {
   test('file', () => {
     const oldFilename = getTempFilename('file')
     const newFilename = getTempFilename('new-file')

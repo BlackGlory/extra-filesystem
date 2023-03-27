@@ -1,5 +1,5 @@
-import { ensureFileSync } from './ensure-file-sync'
-import { createTempNameSync } from './create-temp-name-sync'
+import { ensureFileSync } from './ensure-file-sync.js'
+import { createTempNameSync } from './create-temp-name-sync.js'
 
 export function createTempFileSync(): string {
   const filename = createTempNameSync()

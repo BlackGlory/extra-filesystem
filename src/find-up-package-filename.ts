@@ -1,5 +1,5 @@
-import * as path from 'path'
-import { pathExists } from './path-exists'
+import path from 'path'
+import { pathExists } from './path-exists.js'
 
 export async function findUpPackageFilename(pathname: string): Promise<string | undefined> {
   pathname = path.resolve(pathname)

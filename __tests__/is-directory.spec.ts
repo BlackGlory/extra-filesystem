@@ -1,7 +1,7 @@
-import { isDirectory } from '@src/is-directory'
-import { getFixtureFilename } from '@test/utils'
+import { isDirectory } from '@src/is-directory.js'
+import { getFixtureFilename } from '@test/utils.js'
 
-describe('isDirectory(path: string): Promise<boolean>', () => {
+describe('isDirectory', () => {
   describe('target is a directory', () => {
     it('return true', async () => {
       const result = await isDirectory(getFixtureFilename('directory'))

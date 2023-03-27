@@ -1,5 +1,5 @@
-import * as path from 'path'
-import { pathExistsSync } from './path-exists-sync'
+import path from 'path'
+import { pathExistsSync } from './path-exists-sync.js'
 
 export function findUpPackageFilenameSync(pathname: string): string | undefined {
   pathname = path.resolve(pathname)

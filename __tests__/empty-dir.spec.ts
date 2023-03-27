@@ -1,8 +1,8 @@
-import { remove } from '@src/remove'
-import { getTempFilename } from '@test/utils'
-import { ensureDir } from '@src/ensure-dir'
-import { ensureFile } from '@src/ensure-file'
-import { emptyDir } from '@src/empty-dir'
+import { remove } from '@src/remove.js'
+import { getTempFilename } from '@test/utils.js'
+import { ensureDir } from '@src/ensure-dir.js'
+import { ensureFile } from '@src/ensure-file.js'
+import { emptyDir } from '@src/empty-dir.js'
 import fs from 'fs/promises'
 
 beforeEach(async () => {
@@ -11,7 +11,7 @@ beforeEach(async () => {
 })
 afterEach(() => remove(getTempFilename('.')))
 
-test('emptyDir(dirname: string): Promise<void>', async () => {
+test('emptyDir', async () => {
   const dirname = getTempFilename('directory')
   await ensureDir(`${dirname}/directory`)
   await ensureFile(`${dirname}/file`)

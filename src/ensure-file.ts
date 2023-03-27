@@ -1,6 +1,6 @@
-import { ensureDir } from './ensure-dir'
-import * as path from 'path'
-import * as fs from 'fs/promises'
+import { ensureDir } from './ensure-dir.js'
+import path from 'path'
+import fs from 'fs/promises'
 import { pass } from '@blackglory/prelude'
 
 export async function ensureFile(filename: string): Promise<void> {

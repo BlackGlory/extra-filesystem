@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import fs from 'fs'
 
 /**
  * Note: Combining pathExists with other fs functions will introduce race conditions.

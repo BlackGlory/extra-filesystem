@@ -1,5 +1,5 @@
-import { readNDJSONFile } from '@src/read-ndjson-file'
-import { getFixtureFilename } from '@test/utils'
+import { readNDJSONFile } from '@src/read-ndjson-file.js'
+import { getFixtureFilename } from '@test/utils.js'
 import { toArrayAsync } from 'iterable-operator'
 
 test('readNDJSONFile', async () => {
