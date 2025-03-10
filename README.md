@@ -284,3 +284,8 @@ function findUpPackageFilename(pathname: string): Promise<string | undefined>
 ```ts
 function findUpPackageFilenameSync(pathname: string): string | undefined
 ```
+
+### pathEquals
+```ts
+function pathEquals(a: string, b: string): boolean
+```
