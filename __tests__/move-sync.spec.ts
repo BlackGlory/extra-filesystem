@@ -1,12 +1,13 @@
 import { moveSync } from '@src/move-sync.js'
 import { getTempFilename } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'
-import { ensureDirSync } from '@src/ensure-dir-sync.js'
 import { emptyDir } from '@src/empty-dir.js'
-import { ensureFileSync } from '@src/ensure-file-sync.js'
 import { remove } from '@src/remove.js'
-import { pathExistsSync } from '@src/path-exists-sync.js'
-import fs from 'fs'
+import { pathExists } from '@src/path-exists.js'
+import fs from 'fs/promises'
+import { getError } from 'return-style'
+import { isDirectory } from '@src/is-directory.js'
+import path from 'path'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -15,43 +16,87 @@ beforeEach(async () => {
 afterEach(() => remove(getTempFilename('.')))
 
 describe('moveSync', () => {
-  test('file', () => {
-    const oldFilename = getTempFilename('file')
-    const newFilename = getTempFilename('new-file')
-    ensureFileSync(oldFilename)
+  describe('file', () => {
+    test('to empty', async () => {
+      const source = getTempFilename('file')
+      await fs.writeFile(source, 'foo')
+      const destination = getTempFilename('new-file')
 
-    const result = moveSync(oldFilename, newFilename)
+      moveSync(source, destination)
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(oldFilename)).toBe(false)
-    expect(pathExistsSync(newFilename)).toBe(true)
+      expect(await pathExists(source)).toBe(false)
+      expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+    })
+
+    test('to file', async () => {
+      const source = getTempFilename('file')
+      await fs.writeFile(source, 'foo', 'utf-8')
+      const destination = getTempFilename('new-file')
+      await fs.writeFile(destination, 'bar', 'utf-8')
+
+      moveSync(source, destination)
+
+      expect(await pathExists(source)).toBe(false)
+      expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+    })
+
+    test('to directory', async () => {
+      const source = getTempFilename('file')
+      await fs.writeFile(source, 'foo', 'utf-8')
+      const destination = getTempFilename('directory')
+      await ensureDir(destination)
+      await fs.writeFile(path.join(destination, 'file'), 'foo', 'utf-8')
+
+      const err = getError(() => moveSync(source, destination))
+
+      expect(err).toBeInstanceOf(Error)
+      expect(await fs.readFile(source, 'utf-8')).toBe('foo')
+      expect(await isDirectory(destination)).toBe(true)
+      expect(await fs.readFile(path.join(destination, 'file'), 'utf-8')).toBe('foo')
+    })
   })
 
-  test('overwrite', () => {
-    const oldFileContent = 'old'
-    const oldFilename = getTempFilename('file')
-    const newFilename = getTempFilename('new-file')
-    fs.writeFileSync(oldFilename, oldFileContent, 'utf-8')
-    ensureFileSync(oldFilename)
+  describe('directory', () => {
+    test('to empty', async () => {
+      const source = getTempFilename('directory')
+      await ensureDir(source)
+      await fs.writeFile(path.join(source, 'file'), 'foo', 'utf-8')
+      const destination = getTempFilename('new-directory')
 
-    const result = moveSync(oldFilename, newFilename)
-    const newFileContent = fs.readFileSync(newFilename, 'utf-8')
+      moveSync(source, destination)
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(oldFilename)).toBe(false)
-    expect(pathExistsSync(newFilename)).toBe(true)
-    expect(newFileContent).toBe(oldFileContent)
-  })
+      expect(await pathExists(source)).toBe(false)
+      expect(await isDirectory(destination)).toBe(true)
+      expect(await fs.readFile(path.join(destination, 'file'), 'utf-8')).toBe('foo')
+    })
 
-  test('directory', () => {
-    const oldDirname = getTempFilename('directory')
-    const newDirname = getTempFilename('new-directory')
-    ensureDirSync(oldDirname)
+    test('to directory', async () => {
+      const source = getTempFilename('directory')
+      await ensureDir(source)
+      await fs.writeFile(path.join(source, 'foo'), 'foo', 'utf-8')
+      const destination = getTempFilename('new-directory')
+      await ensureDir(destination)
+      await fs.writeFile(path.join(destination, 'bar'), 'bar', 'utf-8')
 
-    const result = moveSync(oldDirname, newDirname)
+      moveSync(source, destination)
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(oldDirname)).toBe(false)
-    expect(pathExistsSync(newDirname)).toBe(true)
+      expect(await pathExists(source)).toBe(false)
+      expect(await isDirectory(destination)).toBe(true)
+      expect(await fs.readFile(path.join(destination, 'foo'), 'utf-8')).toBe('foo')
+      expect(await pathExists(path.join(destination, 'bar'))).toBe(false)
+    })
+
+    test('to file', async () => {
+      const source = getTempFilename('directory')
+      await ensureDir(source)
+      const destination = getTempFilename('file')
+      await fs.writeFile(destination, 'foo', 'utf-8')
+
+      const err = getError(() => moveSync(source, destination))
+
+      expect(err).toBeInstanceOf(Error)
+      expect(await isDirectory(source)).toBe(true)
+      expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+    })
   })
 })

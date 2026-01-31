@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 
-export function moveSync(oldPath: string, newPath: string): void {
-  fs.moveSync(oldPath, newPath, {
+export function moveSync(source: string, destination: string): void {
+  fs.moveSync(source, destination, {
     overwrite: true
   })
 }
