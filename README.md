@@ -155,12 +155,12 @@ function writeYAMLFileSync(filename: string, data: unknown): void
 
 ### move
 ```ts
-function move(source: string, destination: string): Promise<void>
+function move(oldPath: string, newPath: string): Promise<void>
 ```
 
 ### moveSync
 ```ts
-function moveSync(source: string, destination: string): void
+function moveSync(oldPath: string, newPath: string): void
 ```
 
 ### copy

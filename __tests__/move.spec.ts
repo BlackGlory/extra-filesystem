@@ -15,38 +15,39 @@ afterEach(() => remove(getTempFilename('.')))
 
 describe('move', () => {
   test('file', async () => {
-    const source = getTempFilename('file')
-    const destination = getTempFilename('new-file')
-    await ensureFile(source)
+    const oldFilename = getTempFilename('file')
+    const newFilename = getTempFilename('new-file')
+    await ensureFile(oldFilename)
 
-    await move(source, destination)
+    await move(oldFilename, newFilename)
 
-    expect(await pathExists(source)).toBe(false)
-    expect(await pathExists(destination)).toBe(true)
+    expect(await pathExists(oldFilename)).toBe(false)
+    expect(await pathExists(newFilename)).toBe(true)
   })
 
   test('overwrite', async () => {
-    const fileContent = 'content'
-    const source = getTempFilename('file')
-    const destination = getTempFilename('new-file')
-    await fs.writeFile(source, fileContent, 'utf-8')
-    await ensureFile(destination)
+    const oldFileContent = 'old'
+    const oldFilename = getTempFilename('file')
+    const newFilename = getTempFilename('new-file')
+    await fs.writeFile(oldFilename, oldFileContent, 'utf-8')
+    await ensureFile(newFilename)
 
-    await move(source, destination)
+    await move(oldFilename, newFilename)
+    const newFileContent = await fs.readFile(newFilename, 'utf-8')
 
-    expect(await pathExists(source)).toBe(false)
-    expect(await pathExists(destination)).toBe(true)
-    expect(await fs.readFile(destination, 'utf-8')).toBe(fileContent)
+    expect(await pathExists(oldFilename)).toBe(false)
+    expect(await pathExists(newFilename)).toBe(true)
+    expect(newFileContent).toBe(oldFileContent)
   })
 
   test('directory', async () => {
-    const source = getTempFilename('directory')
-    const destination = getTempFilename('new-directory')
-    await ensureDir(source)
+    const oldDirname = getTempFilename('directory')
+    const newDirname = getTempFilename('new-directory')
+    await ensureDir(oldDirname)
 
-    await move(source, destination)
+    await move(oldDirname, newDirname)
 
-    expect(await pathExists(source)).toBe(false)
-    expect(await pathExists(destination)).toBe(true)
+    expect(await pathExists(oldDirname)).toBe(false)
+    expect(await pathExists(newDirname)).toBe(true)
   })
 })
