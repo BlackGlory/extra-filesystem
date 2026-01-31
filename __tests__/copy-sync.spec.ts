@@ -1,12 +1,13 @@
 import { copySync } from '@src/copy-sync.js'
 import { getTempFilename } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'
-import { ensureDirSync } from '@src/ensure-dir-sync.js'
 import { emptyDir } from '@src/empty-dir.js'
-import { ensureFileSync } from '@src/ensure-file-sync.js'
 import { remove } from '@src/remove.js'
-import { pathExistsSync } from '@src/path-exists-sync.js'
-import fs from 'fs'
+import { pathExists } from '@src/path-exists.js'
+import fs from 'fs/promises'
+import { getError } from 'return-style'
+import path from 'path'
+import { isDirectory } from '@src/is-directory.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -15,43 +16,120 @@ beforeEach(async () => {
 afterEach(() => remove(getTempFilename('.')))
 
 describe('copySync', () => {
-  test('file', () => {
-    const sourceFilename = getTempFilename('file')
-    const destinationFilename = getTempFilename('new-file')
-    ensureFileSync(sourceFilename)
+  describe('file', () => {
+    test('to empty', async () => {
+      const source = getTempFilename('file')
+      await fs.writeFile(source, 'foo')
+      const destination = getTempFilename('new-file')
 
-    const result = copySync(sourceFilename, destinationFilename)
+      copySync(source, destination)
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(sourceFilename)).toBe(true)
-    expect(pathExistsSync(destinationFilename)).toBe(true)
+      expect(await fs.readFile(source, 'utf-8')).toBe('foo')
+      expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+    })
+
+    test('to file', async () => {
+      const source = getTempFilename('file')
+      await fs.writeFile(source, 'foo', 'utf-8')
+      const destination = getTempFilename('new-file')
+      await fs.writeFile(destination, 'bar', 'utf-8')
+
+      const err = getError(() => copySync(source, destination))
+
+      expect(err).toBeInstanceOf(Error)
+      expect(await fs.readFile(source, 'utf-8')).toBe('foo')
+      expect(await fs.readFile(destination, 'utf-8')).toBe('bar')
+    })
+
+    test('to directory', async () => {
+      const source = getTempFilename('file')
+      await fs.writeFile(source, 'foo', 'utf-8')
+      const destination = getTempFilename('directory')
+      await ensureDir(destination)
+      await fs.writeFile(path.join(destination, 'file'), 'foo', 'utf-8')
+
+      const err = getError(() => copySync(source, destination))
+
+      expect(err).toBeInstanceOf(Error)
+      expect(await fs.readFile(source, 'utf-8')).toBe('foo')
+      expect(await isDirectory(destination)).toBe(true)
+      expect(await fs.readFile(path.join(destination, 'file'), 'utf-8')).toBe('foo')
+    })
+
+    test('edge: destination in a non-existent directory', async () => {
+      const source = getTempFilename('file')
+      await fs.writeFile(source, 'foo')
+      const destinationParent = getTempFilename('directory')
+      const destination = path.join(destinationParent, 'file')
+
+      await copySync(source, destination)
+
+      expect(await fs.readFile(source, 'utf-8')).toBe('foo')
+      expect(await isDirectory(destinationParent)).toBe(true)
+      expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+    })
   })
 
-  test('overwrite', () => {
-    const sourceFileContent = 'source'
-    const sourceFilename = getTempFilename('file')
-    const destinationFilename = getTempFilename('new-file')
-    fs.writeFileSync(sourceFilename, sourceFileContent, 'utf-8')
-    ensureFileSync(sourceFilename)
+  describe('directory', () => {
+    test('to empty', async () => {
+      const source = getTempFilename('directory')
+      await ensureDir(source)
+      await fs.writeFile(path.join(source, 'file'), 'foo', 'utf-8')
+      const destination = getTempFilename('new-directory')
 
-    const result = copySync(sourceFilename, destinationFilename)
-    const destinationFileContent = fs.readFileSync(destinationFilename, 'utf-8')
+      copySync(source, destination)
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(sourceFilename)).toBe(true)
-    expect(pathExistsSync(destinationFilename)).toBe(true)
-    expect(destinationFileContent).toBe(sourceFileContent)
-  })
+      expect(await isDirectory(source)).toBe(true)
+      expect(await fs.readFile(path.join(source, 'file'), 'utf-8')).toBe('foo')
+      expect(await isDirectory(destination)).toBe(true)
+      expect(await fs.readFile(path.join(destination, 'file'), 'utf-8')).toBe('foo')
+    })
 
-  test('directory', () => {
-    const sourceDirname = getTempFilename('directory')
-    const destinationDirname = getTempFilename('new-directory')
-    ensureDirSync(sourceDirname)
+    test('to directory', async () => {
+      const source = getTempFilename('directory')
+      await ensureDir(source)
+      await fs.writeFile(path.join(source, 'foo'), 'foo', 'utf-8')
+      const destination = getTempFilename('new-directory')
+      await ensureDir(destination)
+      await fs.writeFile(path.join(destination, 'bar'), 'bar', 'utf-8')
 
-    const result = copySync(sourceDirname, destinationDirname)
+      const err = getError(() => copySync(source, destination))
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(sourceDirname)).toBe(true)
-    expect(pathExistsSync(destinationDirname)).toBe(true)
+      expect(err).toBeInstanceOf(Error)
+      expect(await isDirectory(source)).toBe(true)
+      expect(await fs.readFile(path.join(source, 'foo'), 'utf-8')).toBe('foo')
+      expect(await isDirectory(destination)).toBe(true)
+      expect(await fs.readFile(path.join(destination, 'bar'), 'utf-8')).toBe('bar')
+      expect(await pathExists(path.join(destination, 'foo'))).toBe(false)
+    })
+
+    test('to file', async () => {
+      const source = getTempFilename('directory')
+      await ensureDir(source)
+      const destination = getTempFilename('file')
+      await fs.writeFile(destination, 'foo', 'utf-8')
+
+      const err = getError(() => copySync(source, destination))
+
+      expect(err).toBeInstanceOf(Error)
+      expect(await isDirectory(source)).toBe(true)
+      expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+    })
+
+    test('edge: destination in a non-existent directory', async () => {
+      const source = getTempFilename('directory')
+      await ensureDir(source)
+      await fs.writeFile(path.join(source, 'file'), 'foo', 'utf-8')
+      const destinationParent = getTempFilename('new-directory-parent')
+      const destination = path.join(destinationParent, 'directory')
+
+      copySync(source, destination)
+
+      expect(await isDirectory(source)).toBe(true)
+      expect(await fs.readFile(path.join(source, 'file'), 'utf-8')).toBe('foo')
+      expect(await isDirectory(destinationParent)).toBe(true)
+      expect(await isDirectory(destination)).toBe(true)
+      expect(await fs.readFile(path.join(destination, 'file'), 'utf-8')).toBe('foo')
+    })
   })
 })

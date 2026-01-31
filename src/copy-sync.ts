@@ -1,7 +1,11 @@
 import fs from 'fs-extra'
+import { pathExistsSync } from './path-exists-sync.js'
 
-export function copySync(sourcePath: string, destinationPath: string): void {
-  fs.copySync(sourcePath, destinationPath, {
-    overwrite: true
+export function copySync(source: string, destination: string): void {
+  if (pathExistsSync(destination)) throw new Error(`${destination} already exists`)
+
+  fs.copySync(source, destination, {
+    overwrite: false
+  , errorOnExist: true
   })
 }

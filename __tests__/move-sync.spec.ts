@@ -34,10 +34,11 @@ describe('moveSync', () => {
       const destination = getTempFilename('new-file')
       await fs.writeFile(destination, 'bar', 'utf-8')
 
-      moveSync(source, destination)
+      const err = getError(() => moveSync(source, destination))
 
-      expect(await pathExists(source)).toBe(false)
-      expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+      expect(err).toBeInstanceOf(Error)
+      expect(await fs.readFile(source, 'utf-8')).toBe('foo')
+      expect(await fs.readFile(destination, 'utf-8')).toBe('bar')
     })
 
     test('to directory', async () => {
@@ -91,12 +92,13 @@ describe('moveSync', () => {
       await ensureDir(destination)
       await fs.writeFile(path.join(destination, 'bar'), 'bar', 'utf-8')
 
-      moveSync(source, destination)
+      const err = getError(() => moveSync(source, destination))
 
-      expect(await pathExists(source)).toBe(false)
+      expect(err).toBeInstanceOf(Error)
+      expect(await isDirectory(source)).toBe(true)
+      expect(await fs.readFile(path.join(source, 'foo'), 'utf-8')).toBe('foo')
       expect(await isDirectory(destination)).toBe(true)
-      expect(await fs.readFile(path.join(destination, 'foo'), 'utf-8')).toBe('foo')
-      expect(await pathExists(path.join(destination, 'bar'))).toBe(false)
+      expect(await fs.readFile(path.join(destination, 'bar'), 'utf-8')).toBe('bar')
     })
 
     test('to file', async () => {

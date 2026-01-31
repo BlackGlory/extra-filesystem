@@ -1,10 +1,14 @@
 import fs from 'fs-extra'
+import { pathExists } from './path-exists.js'
 
 export async function copy(
-  sourcePath: string
-, destinationPath: string
+  source: string
+, destination: string
 ): Promise<void> {
-  await fs.copy(sourcePath, destinationPath, {
-    overwrite: true
+  if (await pathExists(destination)) throw new Error(`${destination} already exists`)
+
+  await fs.copy(source, destination, {
+    overwrite: false
+  , errorOnExist: true
   })
 }

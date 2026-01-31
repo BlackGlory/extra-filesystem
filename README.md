@@ -164,8 +164,7 @@ Unlike the `mv` command in Bash,
 it does not support moving a file or directory to a directory.
 
 If a file or directory already exists at the destination,
-it will be overwritten if the types are the same;
-otherwise, an error will be thrown.
+it will throw an error.
 
 If the destination's parent directory does not exist,
 it will create the parent directory.
@@ -179,13 +178,26 @@ See `move()`.
 
 ### copy
 ```ts
-function copy(sourcePath: string, destinationPath: string): Promise<void>
+function copy(source: string, destination: string): Promise<void>
 ```
+
+Copy the file or directory from `source` to `destination`.
+
+Unlike the `cp` command in Bash,
+it does not support copying a file or directory to a directory.
+
+If a file or directory already exists at the destination,
+it will throw an error.
+
+If the destination's parent directory does not exist,
+it will create the parent directory.
 
 ### copySync
 ```ts
-function copySync(sourcePath: string, destinationPath: string): void
+function copySync(source: string, destination: string): void
 ```
+
+See `copy()`.
 
 ### remove
 ```ts
