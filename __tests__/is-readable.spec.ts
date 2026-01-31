@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { isReadable } from '@src/is-readable.js'
 import { getFixtureFilename, getTempFilename } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'

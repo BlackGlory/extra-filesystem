@@ -1,3 +1,4 @@
+import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { remove } from '@src/remove.js'
 import { removeSync } from '@src/remove-sync.js'
 import { getTempFilename } from '@test/utils.js'

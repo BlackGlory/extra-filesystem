@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { checksumFile } from '@src/checksum-file.js'
 import { getFixtureFilename } from '@test/utils.js'
 import { getErrorPromise } from 'return-style'

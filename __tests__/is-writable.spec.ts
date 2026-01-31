@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { isWritable } from '@src/is-writable.js'
 import { getFixtureFilename, getTempFilename } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'

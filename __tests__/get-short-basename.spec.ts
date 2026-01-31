@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { getShortBasename } from '@src/get-short-basename.js'
 
 test('getShortBasename', () => {

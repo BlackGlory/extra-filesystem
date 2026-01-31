@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { readYAMLFile } from '@src/read-yaml-file.js'
 import { getFixtureFilename } from '@test/utils.js'
 

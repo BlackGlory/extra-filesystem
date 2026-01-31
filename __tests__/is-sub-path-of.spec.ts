@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { isSubPathOf } from '@src/is-sub-path-of.js'
 
 test('isSubPathOf', () => {

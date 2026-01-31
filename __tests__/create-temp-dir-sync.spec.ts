@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { createTempDirSync } from '@src/create-temp-dir-sync.js'
 import os from 'os'
 import { isDirectorySync } from '@src/is-directory-sync.js'

@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { getLongExtension } from '@src/get-long-extension.js'
 
 test('getLongExtension', () => {

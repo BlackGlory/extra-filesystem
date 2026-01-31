@@ -1,3 +1,4 @@
+import { test, expect, beforeEach, afterEach } from 'vitest'
 import { remove } from '@src/remove.js'
 import { getTempFilename } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'

@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { pathEquals } from '@src/path-equals.js'
 
 test('pathEquals', () => {

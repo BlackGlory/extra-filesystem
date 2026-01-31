@@ -1,3 +1,4 @@
+import { describe, it, test, expect } from 'vitest'
 import { pathExists } from '@src/path-exists.js'
 import { getFixtureFilename } from '@test/utils.js'
 

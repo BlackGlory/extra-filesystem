@@ -1,11 +1,11 @@
+import { describe, it, test, expect, vi } from 'vitest'
 import { findAllFilenames } from '@src/find-all-filenames.js'
 import { getFixtureFilename } from '@test/utils.js'
 import { toArrayAsync } from 'iterable-operator'
-import { jest } from '@jest/globals'
 
 describe('findAllFilenames', () => {
   it('returns joined paths', async () => {
-    const fn = jest.fn(() => true)
+    const fn = vi.fn(() => true)
 
     const iter = findAllFilenames(getFixtureFilename('nested'), fn)
     const result = await toArrayAsync(iter)
@@ -21,7 +21,7 @@ describe('findAllFilenames', () => {
   })
 
   test('predicate returns false', async () => {
-    const fn = jest.fn(() => false)
+    const fn = vi.fn(() => false)
 
     const iter = findAllFilenames(getFixtureFilename('nested'), fn)
     const result = await toArrayAsync(iter)

@@ -3,7 +3,7 @@ import path from 'path'
 
 export async function* findAllFilenames(
   dirname: string
-, predicate: (dirname: string) => boolean = _ => true
+, predicate: (dirname: string) => boolean = () => true
 ): AsyncIterableIterator<string> {
   const dirents = await fs.readdir(dirname, { withFileTypes: true })
   for (const dirent of dirents) {

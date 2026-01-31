@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { createTempDir } from '@src/create-temp-dir.js'
 import os from 'os'
 import { isDirectory } from '@src/is-directory.js'

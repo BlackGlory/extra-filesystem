@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { createTempName } from '@src/create-temp-name.js'
 import { pathExists } from '@src/path-exists.js'
 import os from 'os'

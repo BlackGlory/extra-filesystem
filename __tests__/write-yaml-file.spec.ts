@@ -1,3 +1,4 @@
+import { test, expect, beforeEach, afterEach } from 'vitest'
 import { writeYAMLFile } from '@src/write-yaml-file.js'
 import { getTempFilename } from '@test/utils.js'
 import fs from 'fs/promises'

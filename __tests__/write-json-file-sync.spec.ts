@@ -1,3 +1,4 @@
+import { test, expect, beforeEach, afterEach } from 'vitest'
 import { writeJSONFileSync } from '@src/write-json-file-sync.js'
 import { getTempFilename } from '@test/utils.js'
 import { readFileSync } from 'fs'

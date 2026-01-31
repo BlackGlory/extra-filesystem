@@ -1,3 +1,4 @@
+import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { writeIterableToFile } from '@src/write-iterable-to-file.js'
 import { getTempFilename } from '@test/utils.js'
 import fs from 'fs/promises'

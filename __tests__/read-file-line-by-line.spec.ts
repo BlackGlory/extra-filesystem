@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { readFileLineByLine } from '@src/read-file-line-by-line.js'
 import { getFixtureFilename } from '@test/utils.js'
 import { toArrayAsync } from 'iterable-operator'

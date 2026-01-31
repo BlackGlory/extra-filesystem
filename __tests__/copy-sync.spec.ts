@@ -1,3 +1,4 @@
+import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { copySync } from '@src/copy-sync.js'
 import { getTempFilename } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'

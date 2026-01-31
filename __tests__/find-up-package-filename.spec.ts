@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import { findUpPackageFilename } from '@src/find-up-package-filename.js'
 import { getFixtureFilename } from '@test/utils.js'
 

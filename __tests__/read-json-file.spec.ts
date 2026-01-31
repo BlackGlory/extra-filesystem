@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { readJSONFile } from '@src/read-json-file.js'
 import { getFixtureFilename } from '@test/utils.js'
 

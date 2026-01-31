@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { isFileSync } from '@src/is-file-sync.js'
 import { getFixtureFilename } from '@test/utils.js'
 

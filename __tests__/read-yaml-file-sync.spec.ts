@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { readYAMLFileSync } from '@src/read-yaml-file-sync.js'
 import { getFixtureFilename } from '@test/utils.js'
 

@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { createTempFile } from '@src/create-temp-file.js'
 import os from 'os'
 import { isFile } from '@src/is-file.js'

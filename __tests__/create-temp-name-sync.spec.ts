@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import { createTempNameSync } from '@src/create-temp-name-sync.js'
 import { pathExistsSync } from '@src/path-exists-sync.js'
 import os from 'os'
