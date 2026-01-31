@@ -54,6 +54,19 @@ describe('moveSync', () => {
       expect(await isDirectory(destination)).toBe(true)
       expect(await fs.readFile(path.join(destination, 'file'), 'utf-8')).toBe('foo')
     })
+
+    test('edge: destination in a non-existent directory', async () => {
+      const source = getTempFilename('file')
+      await fs.writeFile(source, 'foo')
+      const destinationParent = getTempFilename('directory')
+      const destination = path.join(destinationParent, 'file')
+
+      moveSync(source, destination)
+
+      expect(await pathExists(source)).toBe(false)
+      expect(await isDirectory(destinationParent)).toBe(true)
+      expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+    })
   })
 
   describe('directory', () => {
@@ -97,6 +110,21 @@ describe('moveSync', () => {
       expect(err).toBeInstanceOf(Error)
       expect(await isDirectory(source)).toBe(true)
       expect(await fs.readFile(destination, 'utf-8')).toBe('foo')
+    })
+
+    test('edge: destination in a non-existent directory', async () => {
+      const source = getTempFilename('directory')
+      await ensureDir(source)
+      await fs.writeFile(path.join(source, 'file'), 'foo', 'utf-8')
+      const destinationParent = getTempFilename('new-directory-parent')
+      const destination = path.join(destinationParent, 'directory')
+
+      moveSync(source, destination)
+
+      expect(await pathExists(source)).toBe(false)
+      expect(await isDirectory(destinationParent)).toBe(true)
+      expect(await isDirectory(destination)).toBe(true)
+      expect(await fs.readFile(path.join(destination, 'file'), 'utf-8')).toBe('foo')
     })
   })
 })

@@ -158,14 +158,17 @@ function writeYAMLFileSync(filename: string, data: unknown): void
 function move(source: string, destination: string): Promise<void>
 ```
 
-Move the file from `source` to `destination`.
+Move the file or directory from `source` to `destination`.
 
 Unlike the `mv` command in Bash,
-it does not support moving a file/directory to a directory.
+it does not support moving a file or directory to a directory.
 
 If a file or directory already exists at the destination,
 it will be overwritten if the types are the same;
 otherwise, an error will be thrown.
+
+If the destination's parent directory does not exist,
+it will create the parent directory.
 
 ### moveSync
 ```ts
