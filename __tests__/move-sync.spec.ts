@@ -16,42 +16,38 @@ afterEach(() => remove(getTempFilename('.')))
 
 describe('moveSync', () => {
   test('file', () => {
-    const oldFilename = getTempFilename('file')
-    const newFilename = getTempFilename('new-file')
-    ensureFileSync(oldFilename)
+    const source = getTempFilename('file')
+    const destination = getTempFilename('new-file')
+    ensureFileSync(source)
 
-    const result = moveSync(oldFilename, newFilename)
+    moveSync(source, destination)
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(oldFilename)).toBe(false)
-    expect(pathExistsSync(newFilename)).toBe(true)
+    expect(pathExistsSync(source)).toBe(false)
+    expect(pathExistsSync(destination)).toBe(true)
   })
 
   test('overwrite', () => {
-    const oldFileContent = 'old'
-    const oldFilename = getTempFilename('file')
-    const newFilename = getTempFilename('new-file')
-    fs.writeFileSync(oldFilename, oldFileContent, 'utf-8')
-    ensureFileSync(oldFilename)
+    const fileContent = 'content'
+    const source = getTempFilename('file')
+    const destination = getTempFilename('new-file')
+    fs.writeFileSync(source, fileContent, 'utf-8')
+    ensureFileSync(source)
 
-    const result = moveSync(oldFilename, newFilename)
-    const newFileContent = fs.readFileSync(newFilename, 'utf-8')
+    moveSync(source, destination)
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(oldFilename)).toBe(false)
-    expect(pathExistsSync(newFilename)).toBe(true)
-    expect(newFileContent).toBe(oldFileContent)
+    expect(pathExistsSync(source)).toBe(false)
+    expect(pathExistsSync(destination)).toBe(true)
+    expect(fs.readFileSync(destination, 'utf-8')).toBe(fileContent)
   })
 
   test('directory', () => {
-    const oldDirname = getTempFilename('directory')
-    const newDirname = getTempFilename('new-directory')
-    ensureDirSync(oldDirname)
+    const source = getTempFilename('directory')
+    const destination = getTempFilename('new-directory')
+    ensureDirSync(source)
 
-    const result = moveSync(oldDirname, newDirname)
+    moveSync(source, destination)
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(oldDirname)).toBe(false)
-    expect(pathExistsSync(newDirname)).toBe(true)
+    expect(pathExistsSync(source)).toBe(false)
+    expect(pathExistsSync(destination)).toBe(true)
   })
 })
