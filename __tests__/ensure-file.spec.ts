@@ -5,6 +5,8 @@ import { ensureDir } from '@src/ensure-dir.js'
 import { emptyDir } from '@src/empty-dir.js'
 import { ensureFile } from '@src/ensure-file.js'
 import { pathExists } from '@src/path-exists.js'
+import { getErrorPromise } from 'return-style'
+import { isDirectory } from '@src/is-directory.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -13,6 +15,14 @@ beforeEach(async () => {
 afterEach(() => remove(getTempFilename('.')))
 
 describe('ensureFile', () => {
+  test('does not exist', async () => {
+    const filename = getTempFilename('file')
+
+    await ensureFile(filename)
+
+    expect(await pathExists(filename)).toBe(true)
+  })
+
   test('file exists', async () => {
     const filename = getTempFilename('file')
     await ensureFile(filename)
@@ -22,11 +32,13 @@ describe('ensureFile', () => {
     expect(await pathExists(filename)).toBe(true)
   })
 
-  test('file does not exist', async () => {
-    const filename = getTempFilename('file')
+  test('directory exists', async () => {
+    const pathname = getTempFilename('file')
+    await ensureDir(pathname)
 
-    await ensureFile(filename)
+    const err = await getErrorPromise(ensureFile(pathname))
 
-    expect(await pathExists(filename)).toBe(true)
+    expect(err).toBeInstanceOf(Error)
+    expect(await isDirectory(pathname)).toBe(true)
   })
 })

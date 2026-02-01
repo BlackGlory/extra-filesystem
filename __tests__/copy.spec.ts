@@ -6,7 +6,7 @@ import { emptyDir } from '@src/empty-dir.js'
 import { remove } from '@src/remove.js'
 import { pathExists } from '@src/path-exists.js'
 import fs from 'fs/promises'
-import { getErrorAsync } from 'return-style'
+import { getErrorPromise } from 'return-style'
 import path from 'path'
 import { isDirectory } from '@src/is-directory.js'
 
@@ -35,7 +35,7 @@ describe('copy', () => {
       const destination = getTempFilename('new-file')
       await fs.writeFile(destination, 'bar', 'utf-8')
 
-      const err = await getErrorAsync(() => copy(source, destination))
+      const err = await getErrorPromise(copy(source, destination))
 
       expect(err).toBeInstanceOf(Error)
       expect(await fs.readFile(source, 'utf-8')).toBe('foo')
@@ -49,7 +49,7 @@ describe('copy', () => {
       await ensureDir(destination)
       await fs.writeFile(path.join(destination, 'file'), 'foo', 'utf-8')
 
-      const err = await getErrorAsync(() => copy(source, destination))
+      const err = await getErrorPromise(copy(source, destination))
 
       expect(err).toBeInstanceOf(Error)
       expect(await fs.readFile(source, 'utf-8')).toBe('foo')
@@ -94,7 +94,7 @@ describe('copy', () => {
       await ensureDir(destination)
       await fs.writeFile(path.join(destination, 'bar'), 'bar', 'utf-8')
 
-      const err = await getErrorAsync(() => copy(source, destination))
+      const err = await getErrorPromise(copy(source, destination))
 
       expect(err).toBeInstanceOf(Error)
       expect(await isDirectory(source)).toBe(true)
@@ -110,7 +110,7 @@ describe('copy', () => {
       const destination = getTempFilename('file')
       await fs.writeFile(destination, 'foo', 'utf-8')
 
-      const err = await getErrorAsync(() => copy(source, destination))
+      const err = await getErrorPromise(copy(source, destination))
 
       expect(err).toBeInstanceOf(Error)
       expect(await isDirectory(source)).toBe(true)

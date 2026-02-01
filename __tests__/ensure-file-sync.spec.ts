@@ -5,6 +5,9 @@ import { ensureDir } from '@src/ensure-dir.js'
 import { emptyDir } from '@src/empty-dir.js'
 import { ensureFileSync } from '@src/ensure-file-sync.js'
 import { pathExistsSync } from '@src/path-exists-sync.js'
+import { ensureDirSync } from '@src/ensure-dir-sync.js'
+import { getError } from 'return-style'
+import { isDirectorySync } from '@src/is-directory-sync.js'
 
 beforeEach(async () => {
   await ensureDir(getTempFilename('.'))
@@ -13,22 +16,30 @@ beforeEach(async () => {
 afterEach(() => remove(getTempFilename('.')))
 
 describe('ensureFileSync', () => {
+  test('does not exist', () => {
+    const filename = getTempFilename('file')
+
+    ensureFileSync(filename)
+
+    expect(pathExistsSync(filename)).toBe(true)
+  })
+
   test('file exists', () => {
     const filename = getTempFilename('file')
     ensureFileSync(filename)
 
-    const result = ensureFileSync(filename)
+    ensureFileSync(filename)
 
-    expect(result).toBeUndefined()
     expect(pathExistsSync(filename)).toBe(true)
   })
 
-  test('file does not exist', () => {
-    const filename = getTempFilename('file')
+  test('directory exists', () => {
+    const pathname = getTempFilename('file')
+    ensureDirSync(pathname)
 
-    const result = ensureFileSync(filename)
+    const err = getError(() => ensureFileSync(pathname))
 
-    expect(result).toBeUndefined()
-    expect(pathExistsSync(filename)).toBe(true)
+    expect(err).toBeInstanceOf(Error)
+    expect(isDirectorySync(pathname)).toBe(true)
   })
 })
