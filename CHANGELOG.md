@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/BlackGlory/extra-filesystem/compare/v0.6.0...v0.6.1) (2026-02-01)
+
+
+### Bug Fixes
+
+* **ensure-file:** throw an error if the path already exists and is not a file ([1571e8f](https://github.com/BlackGlory/extra-filesystem/commit/1571e8f174692a6ceb67b9d092a701ae9c346e71))
+
 ## [0.6.0](https://github.com/BlackGlory/extra-filesystem/compare/v0.5.2...v0.6.0) (2026-01-31)
 
 
