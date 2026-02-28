@@ -241,7 +241,7 @@ function findAllFilenames(
 ```ts
 function findAllDirnames(
   dirname: string
-, predicate: (dirname: string) => boolean = _ => true
+, predicate: (dirname: string) => Awaitable<boolean> = _ => true
 ): AsyncIterableIterator<string>
 ```
 

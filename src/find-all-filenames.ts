@@ -28,11 +28,6 @@ export async function* findAllFilenames(
   }
 }
 
-function* handleFile(parentDirname: string, dirent: Dirent): IterableIterator<string> {
-  const filename = path.join(parentDirname, dirent.name)
-  yield filename
-}
-
 async function* handleDirectory(
   parentDirname: string
 , dirent: Dirent
@@ -42,4 +37,9 @@ async function* handleDirectory(
   if (await predicate(subDirname)) {
     yield* findAllFilenames(subDirname, predicate)
   }
+}
+
+function* handleFile(parentDirname: string, dirent: Dirent): IterableIterator<string> {
+  const filename = path.join(parentDirname, dirent.name)
+  yield filename
 }
