@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { isReadable } from '@src/is-readable.js'
-import { getFixtureFilename, getTempFilename } from '@test/utils.js'
+import { getFixturePathname, getTempPathname } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'
 import { emptyDir } from '@src/empty-dir.js'
 import fs from 'fs/promises'
@@ -11,15 +11,15 @@ import { remove } from '@src/remove.js'
 // then we cannot commit the fixture to the repository (permission denied).
 
 beforeEach(async () => {
-  await ensureDir(getTempFilename('.'))
-  await emptyDir(getTempFilename('.'))
+  await ensureDir(getTempPathname('.'))
+  await emptyDir(getTempPathname('.'))
 })
-afterEach(() => remove(getTempFilename('.')))
+afterEach(() => remove(getTempPathname('.')))
 
 describe('isReadable', () => {
   describe('target is readable', () => {
     it('return true', async () => {
-      const result = await isReadable(getFixtureFilename('file'))
+      const result = await isReadable(getFixturePathname('file'))
 
       expect(result).toBe(true)
     })
@@ -27,7 +27,7 @@ describe('isReadable', () => {
 
   describe('target is unreadable', () => {
     it('return false', async () => {
-      const fixture = getTempFilename('unreadable')
+      const fixture = getTempPathname('unreadable')
       await ensureFile(fixture)
       await fs.chmod(fixture, 0o333)
 

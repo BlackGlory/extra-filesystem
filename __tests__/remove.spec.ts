@@ -1,20 +1,20 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { remove } from '@src/remove.js'
-import { getTempFilename } from '@test/utils.js'
+import { getTempPathname } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'
 import { emptyDir } from '@src/empty-dir.js'
 import { ensureFile } from '@src/ensure-file.js'
 import { pathExists } from '@src/path-exists.js'
 
 beforeEach(async () => {
-  await ensureDir(getTempFilename('.'))
-  await emptyDir(getTempFilename('.'))
+  await ensureDir(getTempPathname('.'))
+  await emptyDir(getTempPathname('.'))
 })
-afterEach(() => remove(getTempFilename('.')))
+afterEach(() => remove(getTempPathname('.')))
 
 describe('remove', () => {
   test('file', async () => {
-    const filename = getTempFilename('file')
+    const filename = getTempPathname('file')
     await ensureFile(filename)
 
     await remove(filename)
@@ -23,7 +23,7 @@ describe('remove', () => {
   })
 
   test('directory', async () => {
-    const dirname = getTempFilename('directory')
+    const dirname = getTempPathname('directory')
     await ensureDir(dirname)
 
     await remove(dirname)
@@ -32,9 +32,9 @@ describe('remove', () => {
   })
 
   test('non-empty directory', async () => {
-    const dirname = getTempFilename('directory')
+    const dirname = getTempPathname('directory')
     await ensureDir(dirname)
-    await ensureFile(getTempFilename('directory/file'))
+    await ensureFile(getTempPathname('directory/file'))
 
     await remove(dirname)
 

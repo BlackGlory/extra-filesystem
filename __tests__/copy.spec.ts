@@ -1,6 +1,6 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { copy } from '@src/copy.js'
-import { getTempFilename } from '@test/utils.js'
+import { getTempPathname } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'
 import { emptyDir } from '@src/empty-dir.js'
 import { remove } from '@src/remove.js'
@@ -11,17 +11,17 @@ import path from 'path'
 import { isDirectory } from '@src/is-directory.js'
 
 beforeEach(async () => {
-  await ensureDir(getTempFilename('.'))
-  await emptyDir(getTempFilename('.'))
+  await ensureDir(getTempPathname('.'))
+  await emptyDir(getTempPathname('.'))
 })
-afterEach(() => remove(getTempFilename('.')))
+afterEach(() => remove(getTempPathname('.')))
 
 describe('copy', () => {
   describe('file', () => {
     test('to empty', async () => {
-      const source = getTempFilename('file')
+      const source = getTempPathname('file')
       await fs.writeFile(source, 'foo')
-      const destination = getTempFilename('new-file')
+      const destination = getTempPathname('new-file')
 
       await copy(source, destination)
 
@@ -30,9 +30,9 @@ describe('copy', () => {
     })
 
     test('to file', async () => {
-      const source = getTempFilename('file')
+      const source = getTempPathname('file')
       await fs.writeFile(source, 'foo', 'utf-8')
-      const destination = getTempFilename('new-file')
+      const destination = getTempPathname('new-file')
       await fs.writeFile(destination, 'bar', 'utf-8')
 
       const err = await getErrorPromise(copy(source, destination))
@@ -43,9 +43,9 @@ describe('copy', () => {
     })
 
     test('to directory', async () => {
-      const source = getTempFilename('file')
+      const source = getTempPathname('file')
       await fs.writeFile(source, 'foo', 'utf-8')
-      const destination = getTempFilename('directory')
+      const destination = getTempPathname('directory')
       await ensureDir(destination)
       await fs.writeFile(path.join(destination, 'file'), 'foo', 'utf-8')
 
@@ -58,9 +58,9 @@ describe('copy', () => {
     })
 
     test('edge: destination in a non-existent directory', async () => {
-      const source = getTempFilename('file')
+      const source = getTempPathname('file')
       await fs.writeFile(source, 'foo')
-      const destinationParent = getTempFilename('directory')
+      const destinationParent = getTempPathname('directory')
       const destination = path.join(destinationParent, 'file')
 
       await copy(source, destination)
@@ -73,10 +73,10 @@ describe('copy', () => {
 
   describe('directory', () => {
     test('to empty', async () => {
-      const source = getTempFilename('directory')
+      const source = getTempPathname('directory')
       await ensureDir(source)
       await fs.writeFile(path.join(source, 'file'), 'foo', 'utf-8')
-      const destination = getTempFilename('new-directory')
+      const destination = getTempPathname('new-directory')
 
       await copy(source, destination)
 
@@ -87,10 +87,10 @@ describe('copy', () => {
     })
 
     test('to directory', async () => {
-      const source = getTempFilename('directory')
+      const source = getTempPathname('directory')
       await ensureDir(source)
       await fs.writeFile(path.join(source, 'foo'), 'foo', 'utf-8')
-      const destination = getTempFilename('new-directory')
+      const destination = getTempPathname('new-directory')
       await ensureDir(destination)
       await fs.writeFile(path.join(destination, 'bar'), 'bar', 'utf-8')
 
@@ -105,9 +105,9 @@ describe('copy', () => {
     })
 
     test('to file', async () => {
-      const source = getTempFilename('directory')
+      const source = getTempPathname('directory')
       await ensureDir(source)
-      const destination = getTempFilename('file')
+      const destination = getTempPathname('file')
       await fs.writeFile(destination, 'foo', 'utf-8')
 
       const err = await getErrorPromise(copy(source, destination))
@@ -118,10 +118,10 @@ describe('copy', () => {
     })
 
     test('edge: destination in a non-existent directory', async () => {
-      const source = getTempFilename('directory')
+      const source = getTempPathname('directory')
       await ensureDir(source)
       await fs.writeFile(path.join(source, 'file'), 'foo', 'utf-8')
-      const destinationParent = getTempFilename('new-directory-parent')
+      const destinationParent = getTempPathname('new-directory-parent')
       const destination = path.join(destinationParent, 'directory')
 
       await copy(source, destination)

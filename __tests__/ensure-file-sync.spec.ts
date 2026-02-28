@@ -1,6 +1,6 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { remove } from '@src/remove.js'
-import { getTempFilename } from '@test/utils.js'
+import { getTempPathname } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'
 import { emptyDir } from '@src/empty-dir.js'
 import { ensureFileSync } from '@src/ensure-file-sync.js'
@@ -10,14 +10,14 @@ import { getError } from 'return-style'
 import { isDirectorySync } from '@src/is-directory-sync.js'
 
 beforeEach(async () => {
-  await ensureDir(getTempFilename('.'))
-  await emptyDir(getTempFilename('.'))
+  await ensureDir(getTempPathname('.'))
+  await emptyDir(getTempPathname('.'))
 })
-afterEach(() => remove(getTempFilename('.')))
+afterEach(() => remove(getTempPathname('.')))
 
 describe('ensureFileSync', () => {
   test('does not exist', () => {
-    const filename = getTempFilename('file')
+    const filename = getTempPathname('file')
 
     ensureFileSync(filename)
 
@@ -25,7 +25,7 @@ describe('ensureFileSync', () => {
   })
 
   test('file exists', () => {
-    const filename = getTempFilename('file')
+    const filename = getTempPathname('file')
     ensureFileSync(filename)
 
     ensureFileSync(filename)
@@ -34,7 +34,7 @@ describe('ensureFileSync', () => {
   })
 
   test('directory exists', () => {
-    const pathname = getTempFilename('file')
+    const pathname = getTempPathname('file')
     ensureDirSync(pathname)
 
     const err = getError(() => ensureFileSync(pathname))

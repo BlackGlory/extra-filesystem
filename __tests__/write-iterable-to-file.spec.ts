@@ -1,21 +1,21 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { writeIterableToFile } from '@src/write-iterable-to-file.js'
-import { getTempFilename } from '@test/utils.js'
+import { getTempPathname } from '@test/utils.js'
 import fs from 'fs/promises'
 import { emptyDir } from '@src/empty-dir.js'
 import { ensureDir } from '@src/ensure-dir.js'
 import { remove } from '@src/remove.js'
 
 beforeEach(async () => {
-  await ensureDir(getTempFilename('.'))
-  await emptyDir(getTempFilename('.'))
+  await ensureDir(getTempPathname('.'))
+  await emptyDir(getTempPathname('.'))
 })
-afterEach(() => remove(getTempFilename('.')))
+afterEach(() => remove(getTempPathname('.')))
 
 describe('writeIterableToFile', () => {
   test('iterable', async () => {
     const data = 'hello'
-    const filename = getTempFilename('file')
+    const filename = getTempPathname('file')
 
     await writeIterableToFile(filename, toIterable(data))
 
@@ -24,7 +24,7 @@ describe('writeIterableToFile', () => {
 
   test('async iterable', async () => {
     const data = 'hello'
-    const filename = getTempFilename('file')
+    const filename = getTempPathname('file')
 
     await writeIterableToFile(filename, toAsyncIterable(data))
 

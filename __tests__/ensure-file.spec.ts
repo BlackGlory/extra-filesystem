@@ -1,6 +1,6 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { remove } from '@src/remove.js'
-import { getTempFilename } from '@test/utils.js'
+import { getTempPathname } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'
 import { emptyDir } from '@src/empty-dir.js'
 import { ensureFile } from '@src/ensure-file.js'
@@ -9,14 +9,14 @@ import { getErrorPromise } from 'return-style'
 import { isDirectory } from '@src/is-directory.js'
 
 beforeEach(async () => {
-  await ensureDir(getTempFilename('.'))
-  await emptyDir(getTempFilename('.'))
+  await ensureDir(getTempPathname('.'))
+  await emptyDir(getTempPathname('.'))
 })
-afterEach(() => remove(getTempFilename('.')))
+afterEach(() => remove(getTempPathname('.')))
 
 describe('ensureFile', () => {
   test('does not exist', async () => {
-    const filename = getTempFilename('file')
+    const filename = getTempPathname('file')
 
     await ensureFile(filename)
 
@@ -24,7 +24,7 @@ describe('ensureFile', () => {
   })
 
   test('file exists', async () => {
-    const filename = getTempFilename('file')
+    const filename = getTempPathname('file')
     await ensureFile(filename)
 
     await ensureFile(filename)
@@ -33,7 +33,7 @@ describe('ensureFile', () => {
   })
 
   test('directory exists', async () => {
-    const pathname = getTempFilename('file')
+    const pathname = getTempPathname('file')
     await ensureDir(pathname)
 
     const err = await getErrorPromise(ensureFile(pathname))

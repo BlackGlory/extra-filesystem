@@ -233,7 +233,7 @@ function isReadable(path: string): Promise<boolean>
 ```ts
 function findAllFilenames(
   dirname: string
-, predicate: (dirname: string) => boolean = _ => true
+, predicate: (dirname: string) => Awaitable<boolean> = _ => true
 ): AsyncIterableIterator<string>
 ```
 

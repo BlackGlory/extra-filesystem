@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { isWritable } from '@src/is-writable.js'
-import { getFixtureFilename, getTempFilename } from '@test/utils.js'
+import { getFixturePathname, getTempPathname } from '@test/utils.js'
 import { ensureDir } from '@src/ensure-dir.js'
 import { emptyDir } from '@src/empty-dir.js'
 import { remove } from '@src/remove.js'
@@ -11,15 +11,15 @@ import { ensureFile } from '@src/ensure-file.js'
 // then ci will failed because git does not keep the file mode.
 
 beforeEach(async () => {
-  await ensureDir(getTempFilename('.'))
-  await emptyDir(getTempFilename('.'))
+  await ensureDir(getTempPathname('.'))
+  await emptyDir(getTempPathname('.'))
 })
-afterEach(() => remove(getTempFilename('.')))
+afterEach(() => remove(getTempPathname('.')))
 
 describe('isWritable', () => {
   describe('target is writable', () => {
     it('return true', async () => {
-      const result = await isWritable(getFixtureFilename('file'))
+      const result = await isWritable(getFixturePathname('file'))
 
       expect(result).toBe(true)
     })
@@ -27,7 +27,7 @@ describe('isWritable', () => {
 
   describe('target is unwritable', () => {
     it('return false', async () => {
-      const fixture = getTempFilename('unwritable')
+      const fixture = getTempPathname('unwritable')
       await ensureFile(fixture)
       await fs.chmod(fixture, 0o555)
 

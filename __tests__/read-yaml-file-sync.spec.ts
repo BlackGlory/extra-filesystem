@@ -1,9 +1,9 @@
 import { test, expect } from 'vitest'
 import { readYAMLFileSync } from '@src/read-yaml-file-sync.js'
-import { getFixtureFilename } from '@test/utils.js'
+import { getFixturePathname } from '@test/utils.js'
 
 test('readYAMLFileSync', () => {
-  const result = readYAMLFileSync(getFixtureFilename('data.json'))
+  const result = readYAMLFileSync(getFixturePathname('data.json'))
 
   expect(result).toBe('yaml')
 })

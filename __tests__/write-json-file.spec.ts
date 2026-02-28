@@ -1,20 +1,20 @@
 import { test, expect, beforeEach, afterEach } from 'vitest'
 import { writeJSONFile } from '@src/write-json-file.js'
-import { getTempFilename } from '@test/utils.js'
+import { getTempPathname } from '@test/utils.js'
 import fs from 'fs/promises'
 import { emptyDir } from '@src/empty-dir.js'
 import { ensureDir } from '@src/ensure-dir.js'
 import { remove } from '@src/remove.js'
 
 beforeEach(async () => {
-  await ensureDir(getTempFilename('.'))
-  await emptyDir(getTempFilename('.'))
+  await ensureDir(getTempPathname('.'))
+  await emptyDir(getTempPathname('.'))
 })
-afterEach(() => remove(getTempFilename('.')))
+afterEach(() => remove(getTempPathname('.')))
 
 test('writeJSONFile', async () => {
   const data = { json: 'json' }
-  const filename = getTempFilename('json-file')
+  const filename = getTempPathname('json-file')
 
   await writeJSONFile(filename, data, { spaces: 2 })
 

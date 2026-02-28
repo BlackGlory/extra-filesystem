@@ -1,18 +1,18 @@
 import { describe, test, expect } from 'vitest'
 import { findUpPackageFilenameSync } from '@src/find-up-package-filename-sync.js'
-import { getFixtureFilename } from '@test/utils.js'
+import { getFixturePathname } from '@test/utils.js'
 
 describe('findUpPackageFilenameSync', () => {
   test('find up', () => {
-    const result = findUpPackageFilenameSync(getFixtureFilename('directory'))
+    const result = findUpPackageFilenameSync(getFixturePathname('directory'))
 
-    expect(result).toBe(getFixtureFilename('./package.json'))
+    expect(result).toBe(getFixturePathname('./package.json'))
   })
 
   test('same directory', () => {
-    const result = findUpPackageFilenameSync(getFixtureFilename('.'))
+    const result = findUpPackageFilenameSync(getFixturePathname('.'))
 
-    expect(result).toBe(getFixtureFilename('./package.json'))
+    expect(result).toBe(getFixturePathname('./package.json'))
   })
 
   test('not found', () => {

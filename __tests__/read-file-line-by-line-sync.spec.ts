@@ -1,10 +1,10 @@
 import { test, expect } from 'vitest'
 import { readFileLineByLineSync } from '@src/read-file-line-by-line-sync.js'
-import { getFixtureFilename } from '@test/utils.js'
+import { getFixturePathname } from '@test/utils.js'
 import { toArray } from 'iterable-operator'
 
 test('readFileLineByLineSync', () => {
-  const iter = readFileLineByLineSync(getFixtureFilename('multiline'))
+  const iter = readFileLineByLineSync(getFixturePathname('multiline'))
   const result = toArray(iter)
 
   expect(result).toStrictEqual([
