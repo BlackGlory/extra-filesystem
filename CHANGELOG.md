@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/BlackGlory/extra-filesystem/compare/v0.6.1...v0.6.2) (2026-02-28)
+
+
+### Features
+
+* **find-all-dirnames:** add support for symbolic links ([0efa14c](https://github.com/BlackGlory/extra-filesystem/commit/0efa14c3b6bb1bcb6867efdf54d1891c2a92b4df))
+* **find-all-filenames:** add support for symbolic links ([aa33529](https://github.com/BlackGlory/extra-filesystem/commit/aa3352960c26bef8cd94ea600a4b4d7967fece95))
+
 ### [0.6.1](https://github.com/BlackGlory/extra-filesystem/compare/v0.6.0...v0.6.1) (2026-02-01)
 
 
